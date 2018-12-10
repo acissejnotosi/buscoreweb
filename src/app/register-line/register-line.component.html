@@ -1,0 +1,58 @@
+<div class="contentBox-small">
+  <div class="content-whole">
+    <h1 style="text-align: center;">Cadastrar Linha</h1>
+    <form style="padding: 50px; font-size: 20px;">
+
+      <div style="display: inline-block; width: 45%">
+        Número da Linha:<br />
+        <input type="text" name="lineNumber">
+      </div>
+      <div style="width: 45%">
+        Nome da Linha:<br />
+        <input type="text" name="linename">
+      </div>
+      <div>
+        <div style="display: inline-block; margin-top: 10px; width: 250px;">
+          Número de Paradas:<br />
+          <input type="number" name="stops" maxlength="10">
+        </div>
+        <div style="display: inline-block; width: 250px; margin-top: 10px;">
+          Número de Buracos:<br />
+          <input type="number" name="holes" maxlength="10">
+        </div>
+      </div>
+      <div>
+        <div style="display: inline-block; width: 250px; margin-top: 10px;">
+          Número de Semáforos:<br />
+          <input type="number" name="stoplights" maxlength="10">
+        </div>
+        <div style="display: inline-block; width: 250px; margin-top: 10px;">
+          Número de Lombadas:<br />
+          <input type="number" name="speedbumps" maxlength="10">
+        </div>
+      </div>
+      <div style="width: 250px; display: inline-block;">
+        Tipo de Ônibus:<br />
+        <select name="bustype" id="appearance-select">
+          <option>Micro</option>
+          <option>Microespecial</option>
+          <option>Comum</option>
+          <option>Padron</option>
+          <option>Articulado</option>
+          <option>Linha Direta</option>
+          <option>Linha Direta Articulado</option>
+          <option>Articulado Expresso BRT</option>
+          <option>Biarticulado BRT</option>
+          <option>Especial SITES</option>
+        </select>
+      </div>
+      <div style="display: inline-block; width: 250px; margin-top: 10px;">
+        Peso do Ônibus:<br />
+        <input type="text" name="weight" readonly disabled>
+      </div>
+
+      <button style="margin-top: 20px;" id="appearance-button">Cadastrar</button>
+
+    </form>
+  </div>
+</div>

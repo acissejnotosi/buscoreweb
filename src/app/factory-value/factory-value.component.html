@@ -1,0 +1,64 @@
+<div class="contentBox-small">
+  <div class="content-whole">
+    <h1 style="text-align: center;">Valor de Fábrica</h1>
+    <form style="padding: 50px; font-size: 20px;">
+      <div style="display: inline-block; width: 40%">
+        Selecionar Linha:<br />
+        <select name="busline" id="appearance-select">
+          <option>Circular Centro (Horário)</option>
+          <option selected>Interbairros II</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div style="width: 40%; margin-top: 10px;">
+        Componente:<br />
+        <select name="component" id="appearance-select">
+          <option>Suspensão</option>
+          <option>Freio</option>
+          <option>Embreagem</option>
+        </select>
+      </div>
+
+      <table border="1" style="margin-top: 20px;">
+        <thead>
+          <tr>
+            <th>Componente Mecânico</th>
+            <th>RPN Buraco</th>
+            <th>RPN Redutor</th>
+            <th>RPN Carga</th>
+            <th><b>RPN Total Fábrica</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Suspensão</td>
+            <td><input type="text" autocomplete="off" /></td>
+            <td><input type="text" autocomplete="off" /></td>
+            <td><input type="text" autocomplete="off" /></td>
+            <td>123</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 20px;">
+        <p><b>Resultados</b></p>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 25%">Suspensão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                RPN: ?<br />
+                KM: ?<br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button style="margin-top: 20px;" id="appearance-button">Salvar</button>
+      </div>
+    </form>
+  </div>

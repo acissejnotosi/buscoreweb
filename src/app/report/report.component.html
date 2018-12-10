@@ -1,0 +1,36 @@
+<div class="contentBox-small">
+  <h1 style="text-align: center;">Relatório</h1>
+  <div class="content-whole">
+    <div style="padding: 20px; font-size: 20px;">
+      <div style="display: inline-block; width: 40%">
+        Linha:<br />
+        <select name="busline" id="appearance-select">
+          <option selected>Todas</option>
+          <option>Circular Centro (Horário)</option>
+          <option>Interbairros II</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div style="width: 40%;">
+        Data:<br />
+        <input type="text" name="date">
+      </div>
+      <div>
+        <span>Componente: </span>
+        <div style="margin-left: 30px; margin-top: 10px;">
+          <input type="checkbox" value="suspension" id="chk_suspension" checked name="componentgroup" />
+          <label for="chk_suspension">Suspensão</label>
+
+          <input type="checkbox" value="brakes" id="chk_brakes" style="margin-left: 30px;" name="componentgroup" />
+          <label for="chk_brakes">Freios</label>
+
+          <input type="checkbox" value="clutch" id="chk_clutch" style="margin-left: 30px;" name="componentgroup" />
+          <label for="chk_clutch">Embreagem</label>
+        </div>
+      </div>
+
+      <a href="reportResults.html"><button style="margin-top: 20px;" id="appearance-button">Gerar Relatório</button></a>
+
+    </div>
+  </div>
+</div>
