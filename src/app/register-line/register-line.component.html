@@ -1,58 +1,88 @@
 <div class="contentBox-small">
   <div class="content-whole">
     <h1 style="text-align: center;">Cadastrar Linha</h1>
-    <form style="padding: 50px; font-size: 20px;">
+    <form [formGroup]="linhaForm" (ngSubmit)="onSubmit()" style="padding: 50px; font-size: 20px;">
 
       <div style="display: inline-block; width: 45%">
         Número da Linha:<br />
-        <input type="text" name="lineNumber">
+        <input type="number" formControlName="numeroLinha">
+        <div *ngIf="numeroLinha?.invalid && (numeroLinha?.dirty || numeroLinha?.touched)">
+          <div *ngIf="numeroLinha?.errors.required || numeroLinha?.errors.minlength || numeroLinha?.errors.maxlength"
+            class="error-validation">
+            O campo número da linha é obrigatório e deve ser um valor entre 0 e 999999.
+          </div>
+        </div>
       </div>
       <div style="width: 45%">
         Nome da Linha:<br />
-        <input type="text" name="linename">
+        <input type="text" formControlName="nomeLinha">
+        <div *ngIf="nomeLinha?.invalid && (nomeLinha?.dirty || nomeLinha?.touched)">
+          <div *ngIf="nomeLinha?.errors.required" class="error-validation">
+            O campo nome da linha é obrigatório.
+          </div>
+        </div>
       </div>
       <div>
         <div style="display: inline-block; margin-top: 10px; width: 250px;">
           Número de Paradas:<br />
-          <input type="number" name="stops" maxlength="10">
+          <input formControlName="numParadas" type="number">
+          <div *ngIf="numParadas?.invalid && (numParadas?.dirty || numParadas?.touched)">
+            <div *ngIf="numParadas?.errors.required || numParadas?.errors.minlength || numParadas?.errors.maxlength"
+              class="error-validation">
+              O campo número de paradas é obrigatório e deve ser um valor entre 0 e 999999.
+            </div>
+          </div>
         </div>
         <div style="display: inline-block; width: 250px; margin-top: 10px;">
           Número de Buracos:<br />
-          <input type="number" name="holes" maxlength="10">
+          <input formControlName="numBuracos" type="number">
+          <div *ngIf="numBuracos?.invalid && (numBuracos?.dirty || numBuracos?.touched)">
+            <div *ngIf="numBuracos?.errors.required || numBuracos?.errors.minlength || numBuracos?.errors.maxlength"
+              class="error-validation">
+              O campo número de buracos é obrigatório e deve ser um valor entre 0 e 999999.
+            </div>
+          </div>
         </div>
       </div>
       <div>
         <div style="display: inline-block; width: 250px; margin-top: 10px;">
           Número de Semáforos:<br />
-          <input type="number" name="stoplights" maxlength="10">
+          <input formControlName="numSemaforo" type="number" name="stoplights">
+          <div *ngIf="numSemaforo?.invalid && (numSemaforo?.dirty || numSemaforo?.touched)">
+            <div *ngIf="numSemaforo?.errors.required || numSemaforo?.errors.minlength || numSemaforo?.errors.maxlength"
+              class="error-validation">
+              O campo número de semáforo é obrigatório e deve ser um valor entre 0 e 999999.
+            </div>
+          </div>
         </div>
         <div style="display: inline-block; width: 250px; margin-top: 10px;">
           Número de Lombadas:<br />
-          <input type="number" name="speedbumps" maxlength="10">
+          <input formControlName="numLombadas" type="number" name="speedbumps">
+          <div *ngIf="numLombadas?.invalid && (numLombadas?.dirty || numLombadas?.touched)">
+            <div *ngIf="numLombadas?.errors.required || numLombadas?.errors.minlength || numLombadas?.errors.maxlength"
+              class="error-validation">
+              O campo número de lombadas é obrigatório e deve ser um valor entre 0 e 999999.
+            </div>
+          </div>
         </div>
       </div>
       <div style="width: 250px; display: inline-block;">
         Tipo de Ônibus:<br />
-        <select name="bustype" id="appearance-select">
-          <option>Micro</option>
-          <option>Microespecial</option>
-          <option>Comum</option>
-          <option>Padron</option>
-          <option>Articulado</option>
-          <option>Linha Direta</option>
-          <option>Linha Direta Articulado</option>
-          <option>Articulado Expresso BRT</option>
-          <option>Biarticulado BRT</option>
-          <option>Especial SITES</option>
+        <select formControlName="tipoOnibusId" id="appearance-select" (change)="onChange($event)">
+          <option *ngFor="let tipo of tiposOnibus" value="{{tipo.id}}">{{tipo.descricao}}</option>
         </select>
+        <div *ngIf="tipoOnibusId?.invalid && (tipoOnibusId?.dirty || tipoOnibusId?.touched)">
+          <div *ngIf="tipoOnibusId?.errors.required || tipoOnibusId?.errors.minlength || tipoOnibusId?.errors.maxlength"
+            class="error-validation">
+            É necessário escolher um tipo de ônibus.
+          </div>
+        </div>
       </div>
       <div style="display: inline-block; width: 250px; margin-top: 10px;">
         Peso do Ônibus:<br />
-        <input type="text" name="weight" readonly disabled>
+        <input type="text" readonly disabled value="{{selectedTipoOnibus?.peso}}">
       </div>
-
-      <button style="margin-top: 20px;" id="appearance-button">Cadastrar</button>
-
+      <button id="appearance-button" type="submit" [disabled]="!linhaForm.valid" style="margin-top: 20px;">Cadastrar</button>
     </form>
   </div>
 </div>

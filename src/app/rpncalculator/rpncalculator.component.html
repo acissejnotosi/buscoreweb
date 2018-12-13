@@ -5,7 +5,9 @@
       <div style="width: 45%">
         Selecionar Linha:<br />
         <select name="busline" id="appearance-select">
-          <option>Interbairros II</option>
+          <option *ngFor="let linha of linhas" value="{{linha.linhaID}}">
+            {{linha.nomeLinha}}
+          </option>
         </select>
       </div>
       <div style="width: 45%">
