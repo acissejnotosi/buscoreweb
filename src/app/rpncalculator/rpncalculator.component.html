@@ -3,15 +3,15 @@
     <h1 style="text-align: center;">Calcular RPN</h1>
     <div style="padding: 50px; font-size: 20px;">
       <div style="width: 45%">
-        Selecionar Linha:<br />
+        Selecionar Linha:
+        <br />
         <select name="busline" id="appearance-select">
-          <option *ngFor="let linha of linhas" value="{{linha.linhaID}}">
-            {{linha.nomeLinha}}
-          </option>
+          <option>Interbairros II</option>
         </select>
       </div>
       <div style="width: 45%">
-        Componente:<br />
+        Componente:
+        <br />
         <select name="component" id="appearance-select">
           <option value="suspension">Suspensão</option>
           <option value="brakes">Freios</option>
@@ -23,38 +23,129 @@
         <thead>
           <tr>
             <th>Descrição</th>
-            <th>Ocorrência</th>
-            <th>Severidade</th>
-            <th>Detecção</th>
-            <th><b>RPN</b></th>
+            <th>
+              <a data-toggle="modal" href="#myModalOcorrencia">Ocorrência</a>
+              <!-- Modal -->
+              <div class="modal fade" id="myModalOcorrencia" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </th>
+            <th>
+
+              <a data-toggle="modal" href="#myModalSeveridade">Severidade</a>
+              <!-- Modal -->
+              <div class="modal fade" id="myModalSeveridade" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </th>
+            <th> 
+              
+              <a data-toggle="modal" href="#myModalDeteccao">Deteccao</a>
+              <!-- Modal -->
+              <div class="modal fade" id="myModalDeteccao" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div></th>
+            <th>
+              <b>RPN</b>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Buracos</td>
-            <td><input type="text" autocomplete="off" /></td>
-            <td><input type="text" autocomplete="off" /></td>
-            <td><input type="text" autocomplete="off" /></td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
             <td>{{ocor1 * seve1 * dete1}}</td>
           </tr>
           <tr>
             <td>Redutores</td>
-            <td><input type="text" autocomplete="off" /></td>
-            <td><input type="text" autocomplete="off" /></td>
-            <td><input type="text" autocomplete="off" /></td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
             <td>{{ocor2 * seve2 * dete2}}</td>
           </tr>
           <tr>
             <td>Carga</td>
-            <td><input type="text" autocomplete="off" /></td>
-            <td><input type="text" autocomplete="off" /></td>
-            <td><input type="text" autocomplete="off" /></td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
+            <td>
+              <input type="text" autocomplete="off" />
+            </td>
             <td>{{ocor3 * seve3 * dete3}}</td>
           </tr>
         </tbody>
       </table>
       <div style="margin-top: 20px;">
-        <p><b>Resultados</b></p>
+        <p>
+          <b>Resultados</b>
+        </p>
         <table>
           <thead>
             <tr>
@@ -66,22 +157,23 @@
           <tbody>
             <tr>
               <td>
-                RPN: x1 + x2 + x3<br />
-                KM: Regra de 3
+                RPN: x1 + x2 + x3
+                <br /> KM: Regra de 3
               </td>
               <td>
-                RPN: x1 + x2 + x3<br />
-                KM: Regra de 3
+                RPN: x1 + x2 + x3
+                <br /> KM: Regra de 3
               </td>
               <td>
-                RPN: x1 + x2 + x3<br />
-                KM: Regra de 3
+                RPN: x1 + x2 + x3
+                <br /> KM: Regra de 3
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <button style="margin-top: 20px;" id="appearance-button">Relatórios</button>
+      <button style="margin-top: 20px;" id="appearance-button">Gerar Relatórios</button>
+      <button style="margin-top: 20px;" id="appearance-button">Salvar Relatório</button>
     </div>
   </div>
 </div>

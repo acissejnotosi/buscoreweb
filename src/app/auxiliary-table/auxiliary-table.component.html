@@ -5,7 +5,7 @@
 
       <div style="width: 250px; display: inline-block;">
         Selecione a tabela:<br />
-        <select name="auxtable" id="appearance-select">
+        <select name="auxtable" id="appearance-select" [(ngModel)]="selectedTipo" (change)="getAuxTable()">
           <option value="type1">Ocorrëncia</option>
           <option value="type2">Severidade</option>
           <option value="type3">Detecção</option>
