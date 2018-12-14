@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { ILinha } from '../models/linha.model'
 import { environment } from '../../environments/environment'
@@ -8,6 +8,10 @@ import { environment } from '../../environments/environment'
 	providedIn: 'root'
 })
 export class LinhaService {
+
+	httpOptions = {
+		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+	};
 
 	private url: string = "api/linha"
 	private api_url: string = environment.api_url
@@ -19,5 +23,8 @@ export class LinhaService {
 		return this._http.get<ILinha[]>(this.final_url)
 	}
 
-
+	saveLinha(formValues: any) {
+		let body = JSON.stringify(formValues)
+		return this._http.post(this.final_url, body, this.httpOptions)
+	}
 }
