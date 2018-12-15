@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { LinhaService } from '../services/linha.service'
 import { TipoOnibusService } from '../services/tipo-onibus.service'
+import { ToastrService } from 'ngx-toastr'
 import { ITipoOnibus } from '../models/tipo-onibus.model'
 
 @Component({
@@ -34,7 +35,8 @@ export class RegisterLineComponent implements OnInit {
 
 	constructor(
 		private _linhaService: LinhaService,
-		private _tipoOnibusService: TipoOnibusService) { }
+		private _tipoOnibusService: TipoOnibusService,
+		private _toastr: ToastrService) { }
 
 	ngOnInit() {
 		this._tipoOnibusService.getTipoOnibus().subscribe(
@@ -64,6 +66,14 @@ export class RegisterLineComponent implements OnInit {
 	}
 
 	onSubmit() {
-		console.warn(this.linhaForm.value)
+		this._linhaService.saveLinha(this.linhaForm.value).subscribe(
+			result => {
+				this._toastr.success("Linha criada com sucesso!", "Registro criado")
+			},
+			error => {
+				console.log(error)
+				this._toastr.error(error.error, "Houve um erro ao salvar a linha")
+			}
+		)
 	}
 }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component'
 import { RouterModule, Routes } from '@angular/router'
@@ -24,6 +25,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login/login.component'
 import { ResetPasswordComponent } from './reset-password/reset-password.component'
 import { RegisterComponent } from './register/register.component'
+
+import { ToastrModule } from 'ngx-toastr'
 
 const routes: Routes = [
 	{
@@ -102,8 +105,10 @@ const routes: Routes = [
 		BrowserModule,
 		HttpClientModule,
 		ReactiveFormsModule,
+		BrowserAnimationsModule,
 		FormsModule,
-		RouterModule.forRoot(routes)
+		RouterModule.forRoot(routes),
+		ToastrModule.forRoot()
 	],
 	providers: [],
 	bootstrap: [AppComponent]
