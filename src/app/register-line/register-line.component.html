@@ -86,7 +86,7 @@
         <input type="text" class="form-control" readonly disabled value="{{selectedTipoOnibus?.peso}}">
       </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="!linhaForm.valid">Cadastrar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!linhaForm.valid && isSubmitting">Cadastrar</button>
 
     </form>
   </div>

@@ -14,6 +14,7 @@ export class RegisterLineComponent implements OnInit {
 
 	selectedTipoOnibus: ITipoOnibus
 	tiposOnibus: ITipoOnibus[]
+	isSubmitting = false
 
 	linhaForm = new FormGroup({
 		linhaId: new FormControl(''),
@@ -66,13 +67,16 @@ export class RegisterLineComponent implements OnInit {
 	}
 
 	onSubmit() {
+		this.isSubmitting = true
 		this._linhaService.saveLinha(this.linhaForm.value).subscribe(
 			result => {
 				this._toastr.success("Linha criada com sucesso!", "Registro criado")
+				this.isSubmitting = false
 			},
 			error => {
 				console.log(error)
 				this._toastr.error(error.error, "Houve um erro ao salvar a linha")
+				this.isSubmitting = false
 			}
 		)
 	}
