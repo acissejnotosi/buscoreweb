@@ -13,7 +13,7 @@
           <th scope="col">Número de Lombadas</th>
           <th scope="col">Tipo de Ônibus</th>
           <th scope="col">Peso do Ônibus</th>
-          <th scope="col">Acoes</th>
+          <th scope="col">Açoes</th>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +28,7 @@
           <td>{{linha.pesoOnibus}}</td>
           <td>
               <a class="btn btn-primary" href="#" role="button">Editar</a>
-              <a class="btn btn-danger" href="#" (click)="removerLinha(linha)" role="button">Excluir</a>
+              <button class="btn btn-danger" (click)="removerLinha(linha)" [disabled]="isDeleting" role="button">Excluir</button>
           </td>
         </tr>
       </tbody>

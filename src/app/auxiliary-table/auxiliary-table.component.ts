@@ -36,7 +36,6 @@ export class AuxiliaryTableComponent implements OnInit {
     this.getSeveridadeTable()
   }
 
-
   getAuxTable() {
       console.log(this.selectedTipo)
       
