@@ -20,7 +20,7 @@ const TYPE3 : string = "type3"
 export class AuxiliaryTableComponent implements OnInit {
 
   selectedTipo : any
-  auxTable : any
+  auxTable : IAuxTable[]
   deteccaoTable : IDeteccao[]
   ocorrenciaTable : IOcorrencia[]
   severidadeTable : ISeveridade[]
@@ -40,13 +40,17 @@ export class AuxiliaryTableComponent implements OnInit {
       console.log(this.selectedTipo)
       
       if(this.selectedTipo == TYPE1){
-        this.auxTable = this.ocorrenciaTable
+
+        for (let entry of this.ocorrenciaTable) {
+         // this.auxTable.
+        }
+    //    this.auxTable = this.ocorrenciaTable
       }else
       if(this.selectedTipo == TYPE2){
-        this.auxTable = this.severidadeTable
+   //     this.auxTable = this.severidadeTable
       }else
       if(this.selectedTipo == TYPE3){
-        this.auxTable = this.deteccaoTable
+  //      this.auxTable = this.deteccaoTable
       }
   }
 
