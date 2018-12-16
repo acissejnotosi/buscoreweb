@@ -50,15 +50,15 @@ export class RegisterLineComponent implements OnInit {
 	}
 
 	onChange() {
-		let values = this.linhaForm.value
+		const values = this.linhaForm.value
 
 		if (!values) return
 
-		let onibusId = values.tipoOnibusId
+		const onibusId = values.tipoOnibusId
 
 		if (!onibusId) return
 
-		let selectedOnibus = this.tiposOnibus.filter(x => x.id == onibusId)
+		const selectedOnibus = this.tiposOnibus.filter(x => x.id == onibusId)
 
 		if (!selectedOnibus || selectedOnibus.length == 0) return
 

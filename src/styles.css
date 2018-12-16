@@ -61,56 +61,6 @@ body {
   width: 50%
 }
 
-/** INPUTS */
-
-input[type=text] {
-  width: 100%;
-  border: 2px solid #aaa;
-  border-radius: 4px;
-  margin: 8px 0;
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  transition: .3s;
-}
-
-input[type=text]:focus {
-  border-color: dodgerblue;
-  box-shadow: 0 0 8px 0 dodgerblue;
-}
-
-input[type=password] {
-  width: 100%;
-  border: 2px solid #aaa;
-  border-radius: 4px;
-  margin: 8px 0;
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  transition: .3s;
-}
-
-input[type=password]:focus {
-  border-color: dodgerblue;
-  box-shadow: 0 0 8px 0 dodgerblue;
-}
-
-input[type=number] {
-  width: 100%;
-  border: 2px solid #aaa;
-  border-radius: 4px;
-  margin: 8px 0;
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  transition: .3s;
-}
-
-input[type=number]:focus {
-  border-color: dodgerblue;
-  box-shadow: 0 0 8px 0 dodgerblue;
-}
-
 #appearance-select {
   width: 100%;
   border: 2px solid #aaa;
@@ -164,27 +114,4 @@ input[type=number]:focus {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-/** TABLE DESIGN*/
-td,
-th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-tr:hover {
-  background-color: #ddd;
-}
-
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #424242;
-  color: white;
 }

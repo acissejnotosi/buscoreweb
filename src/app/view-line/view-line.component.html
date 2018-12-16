@@ -2,36 +2,36 @@
   <div class="content-whole">
     <h1 style="text-align: center;">Consultar Linhas</h1>
 
-    <table>
-      <thead>
+    <table class="table table-striped">
+      <thead class="thead-dark">
         <tr>
-          <th>&nbsp;</th>
-          <th>Número da Linha</th>
-          <th>Nome da Linha</th>
-          <th>Número de Paradas</th>
-          <th>Número de Buracos</th>
-          <th>Número de Semáforos</th>
-          <th>Número de Lombadas</th>
-          <th>Tipo de Ônibus</th>
-          <th>Peso do Ônibus</th>
+          <th scope="col">Número da Linha</th>
+          <th scope="col">Nome da Linha</th>
+          <th scope="col">Número de Paradas</th>
+          <th scope="col">Número de Buracos</th>
+          <th scope="col">Número de Semáforos</th>
+          <th scope="col">Número de Lombadas</th>
+          <th scope="col">Tipo de Ônibus</th>
+          <th scope="col">Peso do Ônibus</th>
+          <th scope="col">Acoes</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><input type="checkbox" /></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
+        <tr *ngFor="let linha of linhas">
+          <td>{{linha.numeroLinha}}</td>
+          <td>{{linha.nomeLinha}}</td>
+          <td>{{linha.numParadas}}</td>
+          <td>{{linha.numBuracos}}</td>
+          <td>{{linha.numSemaforo}}</td>
+          <td>{{linha.numLombadas}}</td>
+          <td>{{linha.tipoOnibusNome}}</td>
+          <td>{{linha.pesoOnibus}}</td>
+          <td>
+              <a class="btn btn-primary" href="#" role="button">Editar</a>
+              <a class="btn btn-danger" href="#" (click)="removerLinha(linha)" role="button">Excluir</a>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <button style="margin-top: 20px;" id="appearance-button">Apagar Seleção</button>
-
   </div>
 </div>
