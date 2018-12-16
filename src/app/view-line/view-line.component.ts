@@ -63,6 +63,7 @@ export class ViewLineComponent implements OnInit {
         result => {
           this._tostrService.success("Linha removida com sucesso!", "Registro removido")
           this.isDeleting = false
+          this.linhas = this.linhas.filter(x => x.linhaId != linha.linhaId)
         },
         error => {
           this._tostrService.error("Ocorreu um erro ao remover a linha.", "Erro")
