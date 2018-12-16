@@ -16,7 +16,7 @@ export class SeveridadeService {
 
 	constructor(private _http: HttpClient) { }
 
-	getTipoOnibus(): Observable<ISeveridade[]> {
+	getSeveridade(): Observable<ISeveridade[]> {
 		return this._http.get<ISeveridade[]>(this.final_url)
 	}
 }
