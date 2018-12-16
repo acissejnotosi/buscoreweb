@@ -16,7 +16,7 @@ export class OcorrenciaService {
 
 	constructor(private _http: HttpClient) { }
 
-	getTipoOnibus(): Observable<IOcorrencia[]> {
+	getOcorrencia(): Observable<IOcorrencia[]> {
 		return this._http.get<IOcorrencia[]>(this.final_url)
 	}
 }

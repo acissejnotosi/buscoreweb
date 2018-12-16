@@ -16,7 +16,7 @@ export class DeteccaoService {
 
 	constructor(private _http: HttpClient) { }
 
-	getTipoOnibus(): Observable<IDeteccao[]> {
+	getDeteccao(): Observable<IDeteccao[]> {
 		return this._http.get<IDeteccao[]>(this.final_url)
 	}
 }
