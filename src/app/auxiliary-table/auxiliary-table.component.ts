@@ -25,7 +25,6 @@ export class AuxiliaryTableComponent implements OnInit {
   ngOnInit() {
   }
 
-
   getAuxTable() {
       console.log(this.selectedTipo)
       
@@ -48,8 +47,6 @@ export class AuxiliaryTableComponent implements OnInit {
 			},
 			error => {
 				console.log(error)
-			}
-  }
-
-
+      }
+    )}
 }

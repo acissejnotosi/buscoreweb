@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { ILinha } from '../models/linha.model'
 import { environment } from '../../environments/environment'
@@ -24,7 +24,12 @@ export class LinhaService {
 	}
 
 	saveLinha(formValues: any) {
-		let body = JSON.stringify(formValues)
+		const body = JSON.stringify(formValues)
 		return this._http.post(this.final_url, body, this.httpOptions)
+	}
+
+	delete(id: number) {
+		const url = `${this.final_url}/${id}`;
+		return this._http.delete(url, this.httpOptions)
 	}
 }
