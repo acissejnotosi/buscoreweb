@@ -36,7 +36,7 @@
                       <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Some text in the modal.</p>
+                      <p>Aparecer tabela Ocorrencia.</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -61,7 +61,7 @@
                       <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Some text in the modal.</p>
+                      <p>Aparecer tabela Severidade.</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -86,7 +86,7 @@
                       <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Some text in the modal.</p>
+                      <p>Aparecer tabela Deteccao.</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -104,44 +104,47 @@
           <tr>
             <td>Buracos</td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="ocor1"/>
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="seve1"/>
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="dete1"/>
             </td>
             <td>{{ocor1 * seve1 * dete1}}</td>
           </tr>
           <tr>
             <td>Redutores</td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="ocor2" />
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="seve2" />
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="dete2" />
             </td>
             <td>{{ocor2 * seve2 * dete2}}</td>
           </tr>
           <tr>
             <td>Carga</td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off" [(ngModel)]="ocor3" />
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off" [(ngModel)]="seve3"/>
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off" [(ngModel)]="dete3"/>
             </td>
             <td>{{ocor3 * seve3 * dete3}}</td>
           </tr>
         </tbody>
       </table>
+
+
+
       <div style="margin-top: 20px;">
         <p>
           <b>Resultados</b>
@@ -157,15 +160,15 @@
           <tbody>
             <tr>
               <td>
-                RPN: x1 + x2 + x3
+                RPN Suspensão: {{RPNT1}}
                 <br /> KM: Regra de 3
               </td>
               <td>
-                RPN: x1 + x2 + x3
+                RPN Freios: {{RPNT2}}
                 <br /> KM: Regra de 3
               </td>
               <td>
-                RPN: x1 + x2 + x3
+                RPN Embreagem: {{RPNT3}}
                 <br /> KM: Regra de 3
               </td>
             </tr>

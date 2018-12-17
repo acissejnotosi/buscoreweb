@@ -1,80 +1,71 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
 <div class="contentBox-small">
   <div class="content-whole">
     <h1 style="text-align: center;">Cadastrar Linha</h1>
     <form style="padding: 50px; font-size: 20px;">
 
       <div style="width: 250px; display: inline-block;">
-        Selecione a tabela:<br />
-        <select name="auxtable" id="appearance-select" [(ngModel)]="selectedTipo" (change)="getAuxTable()">
+        Selecione a tabela:
+        <br />
+        <select name="auxtableSel" id="appearance-select" [(ngModel)]="selectedTipo" (change)="getAuxTable()">
           <option value="type1">Ocorrëncia</option>
           <option value="type2">Severidade</option>
           <option value="type3">Detecção</option>
         </select>
       </div>
       <table style="margin-top: 10px;">
-        <thead>
-          <tr>
-            <th style="text-align: center;">Probabilidade de Falha</th>
-            <th style="text-align: center;">Taxas de Falhas Possíveis</th>
-            <th style="text-align: center;">Índice de Ocorrência</th>
-          </tr>
-        </thead>
-        <tbody style="text-align: center;">
-          <tr>
-            <td>Remota: falha é improvável</td>
-            <td>Chance remota de falha</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>Remota: falha é improvável</td>
-            <td>Frequência muito baixa: 1 vez a cada 4 anos</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>Baixa: relativamente poucas falhas</td>
-            <td>Pouco frequente: 1 vez a cada 2 anos</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>Moderada: falhas ocasionais</td>
-            <td>Frequência baixa: 1 vez por ano</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>Moderada: falhas ocasionais</td>
-            <td>Frequência ocasional: 1 vez por semestre</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>Moderada: falhas ocasionais</td>
-            <td>Frequência moderada: 1 vez por mês</td>
-            <td>6</td>
-          </tr>
-          <tr>
-            <td>Alta: falhas frequentes</td>
-            <td>Frequente: 1 vez por semana</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td>Alta: falhas frequentes</td>
-            <td>Frequente: algumas vezes por semana</td>
-            <td>8</td>
-          </tr>
-          <tr>
-            <td>Muito alta: falhas persistentes</td>
-            <td>Frequência muito elevada: 1 vez ao dia</td>
-            <td>9</td>
-          </tr>
-          <tr>
-            <td>Muito alta: falhas persistentes</td>
-            <td>Frequência máxima: várias vezes ao dia</td>
-            <td>10</td>
-          </tr>
-        </tbody>
-      </table>
+        <div *ngIf="conteudo1">
+          <thead>
+            <tr>
+              <th style="text-align: center;">Probabilidade de Falha</th>
+              <th style="text-align: center;">Taxas de Falhas Possíveis</th>
+              <th style="text-align: center;">Índice de Ocorrência</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center;">
 
+            <tr *ngFor="let entry of ocorrenciaTable">
+              <td>{{entry.probabilidade}}</td>
+              <td>{{entry.taxasFalhasPossiveis}}</td>
+              <td>{{entry.indiceOcorrencia}}</td>
+            </tr>
+          </tbody>
+        </div>
+
+        <div *ngIf="conteudo2">
+          <thead>
+              <tr>
+                <th style="text-align: center;">Severidade Tipo</th>
+                <th style="text-align: center;">Efeito da Severidade</th>
+                <th style="text-align: center;">Indice da Severidade</th>
+              </tr>
+            </thead>
+          <tbody style="text-align: center;">
+            <tr *ngFor="let entry of severidadeTable">
+              <td>{{entry.severidadeTipo}}</td>
+            </tr>
+          </tbody>
+        </div>
+
+        <div *ngIf="conteudo3">
+          <thead>
+            <tr>
+              <th style="text-align: center;">Probabilidade da Detecção</th>
+              <th style="text-align: center;">Faixas de Critérios de Detecção</th>
+              <th style="text-align: center;">Índice de Detecção</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center;">
+            <tr *ngFor="let entry of deteccaoTable">
+              <td>{{entry.probabilidadeDeteccao}}</td>
+              <td>{{entry.faixasCriteriosDeteccao}}</td>
+              <td>{{entry.indiceDeteccao}}</td>
+            </tr>
+          </tbody>
+        </div>
+      </table>
       <button style="margin-top: 20px;" id="appearance-button">Editar</button>
-      <button style="margin-top: 20px;" id="appearance-button">Atualizar</button>
+      <button style="margin-top: 20px;" id="appearance-button">Salvar</button>
 
     </form>
   </div>
