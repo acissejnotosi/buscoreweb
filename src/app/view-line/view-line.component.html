@@ -27,8 +27,9 @@
           <td>{{linha.tipoOnibusNome}}</td>
           <td>{{linha.pesoOnibus}}</td>
           <td>
-              <a class="btn btn-primary" href="#" role="button">Editar</a>
-              <button class="btn btn-danger" (click)="removerLinha(linha)" [disabled]="isDeleting" role="button">Excluir</button>
+            <button class="btn btn-sm btn-primary" (click)="editarLinha(linha)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="removerLinha(linha)" [disabled]="isDeleting" role="button"
+              style="margin-left: 10px">Excluir</button>
           </td>
         </tr>
       </tbody>

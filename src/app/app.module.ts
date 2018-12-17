@@ -26,7 +26,8 @@ import { LoginComponent } from './login/login.component'
 import { ResetPasswordComponent } from './reset-password/reset-password.component'
 import { RegisterComponent } from './register/register.component'
 
-import { ToastrModule } from 'ngx-toastr'
+import { ToastrModule } from 'ngx-toastr';
+import { EditLineComponent } from './edit-line/edit-line.component'
 
 const routes: Routes = [
 	{
@@ -76,6 +77,9 @@ const routes: Routes = [
 	},
 	{
 		path: 'register', component: RegisterComponent
+	},
+	{
+		path: 'edit-line/:id', component: EditLineComponent
 	}
 ]
 
@@ -99,7 +103,8 @@ const routes: Routes = [
 		ForgotPasswordComponent,
 		LoginComponent,
 		ResetPasswordComponent,
-		RegisterComponent
+		RegisterComponent,
+		EditLineComponent
 	],
 	imports: [
 		BrowserModule,
