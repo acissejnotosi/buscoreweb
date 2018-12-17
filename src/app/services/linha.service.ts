@@ -36,4 +36,8 @@ export class LinhaService {
 		const url = `${this.final_url}/${id}`;
 		return this._http.delete(url, this.httpOptions)
 	}
+
+	update(linha: any){
+		return this._http.put(this.final_url, linha, this.httpOptions)
+	}
 }

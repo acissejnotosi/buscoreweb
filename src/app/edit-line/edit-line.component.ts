@@ -18,24 +18,7 @@ export class EditLineComponent implements OnInit {
   tiposOnibus: ITipoOnibus[]
   isSubmitting = false
   linha: ILinha
-
-  linhaForm = new FormGroup({
-		linhaId: new FormControl(''),
-		dataCadastro: new FormControl(''),
-		numeroLinha: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		nomeLinha: new FormControl('', [Validators.required, Validators.maxLength(255)]),
-		numParadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		numBuracos: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		numLombadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		numSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		totalRPNFreiosFabrica: new FormControl(''),
-		totalRPNEmbreagemFabrica: new FormControl(''),
-		totalRPNSuspensaoFabrica: new FormControl(''),
-		totalKmFreiosFabrica: new FormControl(''),
-		totalKmEmbreagemFabrica: new FormControl(''),
-		totalKmSuspensaoFabrica: new FormControl(''),
-		tipoOnibusId: new FormControl('', [Validators.required])
-	})
+  linhaForm: FormGroup
 
   constructor(
     private _linhaService: LinhaService,
@@ -43,6 +26,8 @@ export class EditLineComponent implements OnInit {
     private _toastr: ToastrService,
     private _fb: FormBuilder,
     private _router: ActivatedRoute) {
+
+    this.createForm()
 
     this._router.params.subscribe(
       params => {
@@ -60,7 +45,6 @@ export class EditLineComponent implements OnInit {
         this._linhaService.getLinhaById(id).subscribe(
           result => {
             this.linha = result
-
             this.setForm()
           },
           error => {
@@ -71,13 +55,33 @@ export class EditLineComponent implements OnInit {
     )
   }
 
+  createForm() {
+    this.linhaForm = new FormGroup({
+      linhaId: new FormControl(''),
+      dataCadastro: new FormControl(''),
+      numeroLinha: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+      nomeLinha: new FormControl('', [Validators.required, Validators.maxLength(255)]),
+      numParadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+      numBuracos: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+      numLombadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+      numSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+      totalRPNFreiosFabrica: new FormControl(''),
+      totalRPNEmbreagemFabrica: new FormControl(''),
+      totalRPNSuspensaoFabrica: new FormControl(''),
+      totalKmFreiosFabrica: new FormControl(''),
+      totalKmEmbreagemFabrica: new FormControl(''),
+      totalKmSuspensaoFabrica: new FormControl(''),
+      tipoOnibusId: new FormControl('', [Validators.required])
+    })
+  }
+
   ngOnInit() {
 
   }
 
   setForm() {
 
-    this.linhaForm.setValue({
+    this.linhaForm.patchValue({
       linhaId: this.linha.linhaId,
       dataCadastro: this.linha.dataCadastro,
       numeroLinha: this.linha.numeroLinha,
@@ -94,6 +98,8 @@ export class EditLineComponent implements OnInit {
       totalKmSuspensaoFabrica: this.linha.totalKmSuspensaoFabrica,
       tipoOnibusId: this.linha.tipoOnibusId
     });
+
+    console.log(this.linhaForm.value)
 
     this.linhaForm.markAsUntouched()
     this.linhaForm.markAsPristine()
@@ -117,7 +123,7 @@ export class EditLineComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitting = true
-    this._linhaService.saveLinha(this.linhaForm.value).subscribe(
+    this._linhaService.update(this.linhaForm.value).subscribe(
       result => {
         this._toastr.success("Linha atualizada com sucesso!", "Registro atualizado")
         this.isSubmitting = false
