@@ -10,32 +10,44 @@ import { ILinha } from '../models/linha.model';
 export class RPNCalculatorComponent implements OnInit {
 
 	linhas: ILinha[]
-	ocor1: number
-	seve1: number
-	dete1: number
-	ocor2: number
-	seve2: number
-	dete2: number
-	ocor3: number
-	seve3: number
-	dete3: number
-	RPNT1: number
-	RPNT2: number
-	RPNT3: number
+	selecao: any
+	ocorSuspensao: number
+	seveSuspensao: number
+	deteSuspensao: number
+	ocorFreio: number
+	seveFreio: number
+	deteFreio: number
+	ocorEmbreagem: number
+	seveEmbreagem: number
+	deteEmbreagem: number
+	RPNTSuspensao: number
+	RPNTFreio: number
+	RPNTEmgreagem: number
+	KmSuspensao: number 
+	KmFreio: number
+	KmEmbreagem: number
+	RPNTSuspensaoF: number
+	RPNTFreioF: number
+	RPNTEmgreagemF: number
+	KmSuspensaoF: number 
+	KmFreioF: number
+	KmEmbreagemF: number
 
 	constructor(private _linhaService: LinhaService) { }
 
 	ngOnInit() {
 		this.getLinhas()
-		this.ocor1 = 0
-		this.seve1 = 0
-		this.dete1 = 0
-		this.ocor2 = 0
-		this.seve2 = 0
-		this.dete2 = 0
-		this.ocor3 = 0
-		this.seve3 = 0
-		this.dete3 = 0
+		this.ocorSuspensao = 0
+		this.seveSuspensao = 0
+		this.deteSuspensao = 0
+		this.ocorFreio = 0
+		this.seveFreio = 0
+		this.deteFreio = 0
+		this.ocorEmbreagem = 0
+		this.seveEmbreagem = 0
+		this.deteEmbreagem = 0
+		this.RPNTSuspensaoF = 10 //depois pegar do banco de dados
+		this.KmSuspensaoF = 10 //depois pegar do banco de dados
 	}
 
 
@@ -51,18 +63,30 @@ export class RPNCalculatorComponent implements OnInit {
 		)
 	}
 
-	setRPN1(){
-		this.RPNT1 =
-			(this.ocor1 * this.seve1 * this.dete1) + 
-			(this.ocor2 * this.seve2 * this.dete2) +
-			(this.ocor3 * this.seve3 * this.dete3)
+	setRPNAndKm(){
+
+		if(this.selecao = "suspension" ){
+			this.RPNTSuspensao =
+				(this.ocorSuspensao * this.seveSuspensao * this.deteSuspensao) + 
+				(this.ocorFreio * this.seveFreio * this.deteFreio) +
+				(this.ocorEmbreagem * this.seveEmbreagem * this.deteEmbreagem)
+			this.KmSuspensao = ((this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
+		}else
+		if(this.selecao = "brakes" ){
+			this.RPNTFreio =
+				(this.ocorFreio * this.seveFreio * this.deteFreio) + 
+				(this.ocorFreio * this.seveFreio * this.deteFreio) +
+				(this.ocorFreio * this.seveFreio * this.deteFreio)
+			this.KmSuspensao = ((this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
+		}else
+		if(this.selecao = "clutch" ){
+			this.RPNTSuspensao =
+				(this.ocorSuspensao * this.seveSuspensao * this.deteSuspensao) + 
+				(this.ocorFreio * this.seveFreio * this.deteFreio) +
+				(this.ocorEmbreagem * this.seveEmbreagem * this.deteEmbreagem)
+			this.KmSuspensao = ((this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
+		}
 	}
 
-	setRPN2(){
-		this.RPNT2 = 0
-	}
 
-	setRPN(){
-		this.RPNT3 = 0
-	}
 }

@@ -104,41 +104,41 @@
           <tr>
             <td>Buracos</td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="ocor1"/>
+              <input type="text" autocomplete="off"  [(ngModel)]="ocorSuspensao" (change)="setRPNAndKm()"/>
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="seve1"/>
+              <input type="text" autocomplete="off"  [(ngModel)]="seveSuspensao" (change)="setRPNAndKm()"/>
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="dete1"/>
+              <input type="text" autocomplete="off"  [(ngModel)]="deteSuspensao" (change)="setRPNAndKm()"/>
             </td>
-            <td>{{ocor1 * seve1 * dete1}}</td>
+            <td>{{ocorSuspensao * seveSuspensao * deteSuspensao}}</td>
           </tr>
           <tr>
             <td>Redutores</td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="ocor2" />
+              <input type="text" autocomplete="off"  [(ngModel)]="ocorFreio" (change)="setRPNAndKm()"/>
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="seve2" />
+              <input type="text" autocomplete="off"  [(ngModel)]="seveFreio" (change)="setRPNAndKm()"/>
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="dete2" />
+              <input type="text" autocomplete="off"  [(ngModel)]="deteFreio" (change)="setRPNAndKm()"/>
             </td>
-            <td>{{ocor2 * seve2 * dete2}}</td>
+            <td>{{ocorFreio * seveFreio * deteFreio}}</td>
           </tr>
           <tr>
             <td>Carga</td>
             <td>
-              <input type="text" autocomplete="off" [(ngModel)]="ocor3" />
+              <input type="text" autocomplete="off" [(ngModel)]="ocorEmbreagem" (change)="setRPNAndKm()"/>
             </td>
             <td>
-              <input type="text" autocomplete="off" [(ngModel)]="seve3"/>
+              <input type="text" autocomplete="off" [(ngModel)]="seveEmbreagem" (change)="setRPNAndKm()"/>
             </td>
             <td>
-              <input type="text" autocomplete="off" [(ngModel)]="dete3"/>
+              <input type="text" autocomplete="off" [(ngModel)]="deteEmbreagem" (change)="setRPNAndKm()"/>
             </td>
-            <td>{{ocor3 * seve3 * dete3}}</td>
+            <td>{{ocorEmbreagem * seveEmbreagem * deteEmbreagem}}</td>
           </tr>
         </tbody>
       </table>
@@ -160,16 +160,16 @@
           <tbody>
             <tr>
               <td>
-                RPN Suspensão: {{RPNT1}}
-                <br /> KM: Regra de 3
+                RPN Suspensão: {{RPNTSuspensao}}
+                <br /> KM Suspensão: {{KmSuspensao}}
               </td>
               <td>
-                RPN Freios: {{RPNT2}}
-                <br /> KM: Regra de 3
+                RPN Freios: {{RPNTFreio}}
+                <br /> KM Freio: {{KmFreio}}
               </td>
               <td>
-                RPN Embreagem: {{RPNT3}}
-                <br /> KM: Regra de 3
+                RPN Embreagem: {{RPNTEmbreagem}}
+                <br /> KM Embreagem: {{KmEmbreagem}}
               </td>
             </tr>
           </tbody>
