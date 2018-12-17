@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { LinhaService } from '../services/linha.service'
 import { TipoOnibusService } from '../services/tipo-onibus.service'
 import { ToastrService } from 'ngx-toastr'
@@ -19,12 +19,29 @@ export class EditLineComponent implements OnInit {
   isSubmitting = false
   linha: ILinha
 
-  linhaForm: FormGroup
+  linhaForm = new FormGroup({
+		linhaId: new FormControl(''),
+		dataCadastro: new FormControl(''),
+		numeroLinha: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+		nomeLinha: new FormControl('', [Validators.required, Validators.maxLength(255)]),
+		numParadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+		numBuracos: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+		numLombadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+		numSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+		totalRPNFreiosFabrica: new FormControl(''),
+		totalRPNEmbreagemFabrica: new FormControl(''),
+		totalRPNSuspensaoFabrica: new FormControl(''),
+		totalKmFreiosFabrica: new FormControl(''),
+		totalKmEmbreagemFabrica: new FormControl(''),
+		totalKmSuspensaoFabrica: new FormControl(''),
+		tipoOnibusId: new FormControl('', [Validators.required])
+	})
 
   constructor(
     private _linhaService: LinhaService,
     private _tipoOnibusService: TipoOnibusService,
     private _toastr: ToastrService,
+    private _fb: FormBuilder,
     private _router: ActivatedRoute) {
 
     this._router.params.subscribe(
@@ -59,23 +76,24 @@ export class EditLineComponent implements OnInit {
   }
 
   setForm() {
-    this.linhaForm = new FormGroup({
-      linhaId: new FormControl(this.linha.linhaId),
-      dataCadastro: new FormControl(this.linha.dataCadastro),
-      numeroLinha: new FormControl(this.linha.numeroLinha, [Validators.required, Validators.min(1), Validators.max(99999)]),
-      nomeLinha: new FormControl(this.linha.nomeLinha, [Validators.required, Validators.maxLength(255)]),
-      numParadas: new FormControl(this.linha.numParadas, [Validators.required, Validators.min(1), Validators.max(99999)]),
-      numBuracos: new FormControl(this.linha.numBuracos, [Validators.required, Validators.min(1), Validators.max(99999)]),
-      numLombadas: new FormControl(this.linha.numLombadas, [Validators.required, Validators.min(1), Validators.max(99999)]),
-      numSemaforo: new FormControl(this.linha.numSemaforo, [Validators.required, Validators.min(1), Validators.max(99999)]),
-      totalRPNFreiosFabrica: new FormControl(this.linha.totalRPNFreiosFabrica),
-      totalRPNEmbreagemFabrica: new FormControl(this.linha.totalRPNEmbreagemFabrica),
-      totalRPNSuspensaoFabrica: new FormControl(this.linha.totalRPNSuspensaoFabrica),
-      totalKmFreiosFabrica: new FormControl(this.linha.totalKmFreiosFabrica),
-      totalKmEmbreagemFabrica: new FormControl(this.linha.totalKmEmbreagemFabrica),
-      totalKmSuspensaoFabrica: new FormControl(this.linha.totalKmSuspensaoFabrica),
-      tipoOnibusId: new FormControl(this.linha.tipoOnibusId, [Validators.required])
-    })
+
+    this.linhaForm.setValue({
+      linhaId: this.linha.linhaId,
+      dataCadastro: this.linha.dataCadastro,
+      numeroLinha: this.linha.numeroLinha,
+      nomeLinha: this.linha.nomeLinha,
+      numParadas: this.linha.numParadas,
+      numBuracos: this.linha.numBuracos,
+      numLombadas: this.linha.numLombadas,
+      numSemaforo: this.linha.numSemaforo,
+      totalRPNFreiosFabrica: this.linha.totalRPNFreiosFabrica,
+      totalRPNEmbreagemFabrica: this.linha.totalRPNEmbreagemFabrica,
+      totalRPNSuspensaoFabrica: this.linha.totalRPNSuspensaoFabrica,
+      totalKmFreiosFabrica: this.linha.totalKmFreiosFabrica,
+      totalKmEmbreagemFabrica: this.linha.totalKmEmbreagemFabrica,
+      totalKmSuspensaoFabrica: this.linha.totalKmSuspensaoFabrica,
+      tipoOnibusId: this.linha.tipoOnibusId
+    });
 
     this.linhaForm.markAsUntouched()
     this.linhaForm.markAsPristine()
