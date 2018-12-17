@@ -19,7 +19,7 @@ export class LinhaService {
 
 	constructor(private _http: HttpClient) { }
 
-	getLinhaById(id: number): Observable<ILinha>{
+	getLinhaById(id: number): Observable<ILinha> {
 		const url = this.final_url.concat(`/GetById?id=${id}`)
 		return this._http.get<ILinha>(url)
 	}
@@ -38,7 +38,8 @@ export class LinhaService {
 		return this._http.delete(url, this.httpOptions)
 	}
 
-	update(linha: any){
-		return this._http.put(this.final_url, linha, this.httpOptions)
+	update(linha: ILinha) {
+		const url = this.final_url.concat(`?id=${linha.linhaId}`)
+		return this._http.put(url, linha, this.httpOptions)
 	}
 }
