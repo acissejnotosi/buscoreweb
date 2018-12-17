@@ -14,6 +14,12 @@ export class RPNCalculatorComponent implements OnInit {
 	constructor(private _linhaService: LinhaService) { }
 
 	ngOnInit() {
+		this.getLinhas()
+	}
+
+
+	getLinhas() {
+
 		this._linhaService.getLinhas().subscribe(
 			result => {
 				this.linhas = result
@@ -22,5 +28,6 @@ export class RPNCalculatorComponent implements OnInit {
 				console.log(error)
 			}
 		)
+
 	}
 }

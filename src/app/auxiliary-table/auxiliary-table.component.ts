@@ -20,37 +20,44 @@ const TYPE3 : string = "type3"
 export class AuxiliaryTableComponent implements OnInit {
 
   selectedTipo : any
-  auxTable : IAuxTable[]
   deteccaoTable : IDeteccao[]
   ocorrenciaTable : IOcorrencia[]
   severidadeTable : ISeveridade[]
-  private _deteccaoTableService: DeteccaoService
-  private _severidadeTableService: SeveridadeService
-  private _ocorrenciaTableService: OcorrenciaService
-  
-  constructor() { }
+  conteudo1 : boolean
+  conteudo2 : boolean
+  conteudo3 : boolean
+
+  constructor( private _deteccaoTableService: DeteccaoService,
+    private _severidadeTableService: SeveridadeService,
+    private _ocorrenciaTableService: OcorrenciaService
+    ) { }
 
   ngOnInit() {
     this.getDeteccaoTable()
     this.getOcorrenciaTable()
     this.getSeveridadeTable()
+    this.conteudo1 = false
+    this.conteudo2 = false
+    this.conteudo3 = false
   }
 
   getAuxTable() {
       console.log(this.selectedTipo)
       
       if(this.selectedTipo == TYPE1){
-
-        for (let entry of this.ocorrenciaTable) {
-         // this.auxTable.
-        }
-    //    this.auxTable = this.ocorrenciaTable
+        this.conteudo1 = true
+        this.conteudo2 = false
+        this.conteudo3 = false
       }else
       if(this.selectedTipo == TYPE2){
-   //     this.auxTable = this.severidadeTable
+        this.conteudo1 = false
+        this.conteudo2 = true
+        this.conteudo3 = false
       }else
       if(this.selectedTipo == TYPE3){
-  //      this.auxTable = this.deteccaoTable
+        this.conteudo1 = false
+        this.conteudo2 = false
+        this.conteudo3 = true
       }
   }
 
@@ -65,7 +72,7 @@ export class AuxiliaryTableComponent implements OnInit {
 			})
   }
 
-  getOcorrenciaTable(){
+  getSeveridadeTable(){
 
     this._severidadeTableService.getSeveridade().subscribe(
 			result => {
@@ -76,15 +83,18 @@ export class AuxiliaryTableComponent implements OnInit {
 			})
   }
 
-  getSeveridadeTable(){
+  getOcorrenciaTable(){
 
     this._ocorrenciaTableService.getOcorrencia().subscribe(
 			result => {
-				this.ocorrenciaTable = result
+        this.ocorrenciaTable = result
+        console.log(this.ocorrenciaTable)
 			},
 			error => {
 				console.log(error)
-			})
+      })
+      
+      
   }
 
 

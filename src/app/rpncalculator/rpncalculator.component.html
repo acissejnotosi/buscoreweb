@@ -36,7 +36,7 @@
                       <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Some text in the modal.</p>
+                      <p>Aparecer tabela Ocorrencia.</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -61,7 +61,7 @@
                       <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Some text in the modal.</p>
+                      <p>Aparecer tabela Severidade.</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -86,7 +86,7 @@
                       <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Some text in the modal.</p>
+                      <p>Aparecer tabela Deteccao.</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -117,13 +117,13 @@
           <tr>
             <td>Redutores</td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="ocor2" />
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="seve2" />
             </td>
             <td>
-              <input type="text" autocomplete="off" />
+              <input type="text" autocomplete="off"  [(ngModel)]="dete2" />
             </td>
             <td>{{ocor2 * seve2 * dete2}}</td>
           </tr>
@@ -142,6 +142,9 @@
           </tr>
         </tbody>
       </table>
+
+
+
       <div style="margin-top: 20px;">
         <p>
           <b>Resultados</b>
