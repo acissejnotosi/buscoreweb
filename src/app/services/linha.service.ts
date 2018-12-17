@@ -39,7 +39,6 @@ export class LinhaService {
 	}
 
 	update(linha: ILinha) {
-		const url = this.final_url.concat(`?id=${linha.linhaId}`)
-		return this._http.put(url, linha, this.httpOptions)
+		return this._http.put(this.final_url, linha, this.httpOptions)
 	}
 }
