@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { Observable, ObservableLike } from 'rxjs'
 import { ILinha } from '../models/linha.model'
 import { environment } from '../../environments/environment'
 
@@ -18,6 +18,10 @@ export class LinhaService {
 	private final_url: string = this.api_url.concat(this.url)
 
 	constructor(private _http: HttpClient) { }
+
+	getLinhaById(id: number): Observable<ILinha>{
+		return this._http.get<ILinha>(this.final_url.concat(`?id=${id}`))
+	}
 
 	getLinhas(): Observable<ILinha[]> {
 		return this._http.get<ILinha[]>(this.final_url)

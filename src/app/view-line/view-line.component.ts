@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { LinhaService } from '../services/linha.service'
 import { ILinha } from '../models/linha.model'
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-line',
@@ -15,7 +16,8 @@ export class ViewLineComponent implements OnInit {
 
   constructor(
     private _linhaService: LinhaService,
-    private _tostrService: ToastrService) { }
+    private _tostrService: ToastrService,
+    private _router: Router) { }
 
   ngOnInit() {
     this.linhas = []
@@ -71,5 +73,10 @@ export class ViewLineComponent implements OnInit {
         }
       )
     }
+  }
+
+  editarLinha(linha: ILinha) {
+    console.log(linha)
+    this._router.navigate(['/edit-line', linha.linhaId]);
   }
 }
