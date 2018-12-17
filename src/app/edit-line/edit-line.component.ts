@@ -98,7 +98,7 @@ export class EditLineComponent implements OnInit {
       totalKmSuspensaoFabrica: this.linha.totalKmSuspensaoFabrica,
       tipoOnibusId: this.linha.tipoOnibusId
     });
-
+    console.log(this.linha)
     console.log(this.linhaForm.value)
 
     this.linhaForm.markAsUntouched()
