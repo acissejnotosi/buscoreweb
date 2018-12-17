@@ -71,6 +71,7 @@ export class RegisterLineComponent implements OnInit {
 		this._linhaService.saveLinha(this.linhaForm.value).subscribe(
 			result => {
 				this._toastr.success("Linha criada com sucesso!", "Registro criado")
+				this.linhaForm.reset()
 				this.isSubmitting = false
 			},
 			error => {
