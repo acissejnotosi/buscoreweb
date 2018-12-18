@@ -7,10 +7,6 @@
         <tr>
           <th scope="col">Número da Linha</th>
           <th scope="col">Nome da Linha</th>
-          <th scope="col">Número de Paradas</th>
-          <th scope="col">Número de Buracos</th>
-          <th scope="col">Número de Semáforos</th>
-          <th scope="col">Número de Lombadas</th>
           <th scope="col">Tipo de Ônibus</th>
           <th scope="col">Peso do Ônibus</th>
           <th scope="col">Açoes</th>
@@ -20,10 +16,6 @@
         <tr *ngFor="let linha of linhas">
           <td>{{linha.numeroLinha}}</td>
           <td>{{linha.nomeLinha}}</td>
-          <td>{{linha.numParadas}}</td>
-          <td>{{linha.numBuracos}}</td>
-          <td>{{linha.numSemaforo}}</td>
-          <td>{{linha.numLombadas}}</td>
           <td>{{linha.tipoOnibusNome}}</td>
           <td>{{linha.pesoOnibus}}</td>
           <td>

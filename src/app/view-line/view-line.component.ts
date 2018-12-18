@@ -21,30 +21,7 @@ export class ViewLineComponent implements OnInit {
 
   ngOnInit() {
     this.linhas = []
-    const l: ILinha = {
-      linhaId: 1,
-      numBuracos: 3,
-      numLombadas: 2,
-      numParadas: 1,
-      numSemaforo: 10,
-      numeroLinha: 1,
-      nomeLinha: "teste",
-      tipoOnibusId: 1,
-      tipoOnibusNome: "caminhao",
-      pesoOnibus: 1000,
-      dataCadastro: new Date(),
-      totalKmEmbreagemFabrica: 1,
-      totalKmFreiosFabrica: 1,
-      totalKmSuspensaoFabrica: 1,
-      totalRPNEmbreagemFabrica: 1,
-      totalRPNFreiosFabrica: 1,
-      totalRPNSuspensaoFabrica: 1
-    }
-
-    this.linhas.push(l)
-
-    console.log(this.linhas)
-
+    
     this._linhaService.getLinhas().subscribe(
       result => {
         this.linhas = result

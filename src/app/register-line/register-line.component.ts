@@ -18,19 +18,14 @@ export class RegisterLineComponent implements OnInit {
 
 	linhaForm = new FormGroup({
 		linhaId: new FormControl(''),
-		dataCadastro: new FormControl(''),
 		numeroLinha: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
 		nomeLinha: new FormControl('', [Validators.required, Validators.maxLength(255)]),
-		numParadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		numBuracos: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		numLombadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		numSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-		totalRPNFreiosFabrica: new FormControl(''),
-		totalRPNEmbreagemFabrica: new FormControl(''),
-		totalRPNSuspensaoFabrica: new FormControl(''),
-		totalKmFreiosFabrica: new FormControl(''),
-		totalKmEmbreagemFabrica: new FormControl(''),
-		totalKmSuspensaoFabrica: new FormControl(''),
+		totalRPNFreiosFabrica: new FormControl(0),
+		totalRPNEmbreagemFabrica: new FormControl(0),
+		totalRPNSuspensaoFabrica: new FormControl(0),
+		totalKmFreiosFabrica: new FormControl(0),
+		totalKmEmbreagemFabrica: new FormControl(0),
+		totalKmSuspensaoFabrica: new FormControl(0),
 		tipoOnibusId: new FormControl('', [Validators.required])
 	})
 
@@ -67,6 +62,7 @@ export class RegisterLineComponent implements OnInit {
 	}
 
 	onSubmit() {
+		console.log(this.linhaForm.value)
 		this.isSubmitting = true
 		this._linhaService.saveLinha(this.linhaForm.value).subscribe(
 			result => {

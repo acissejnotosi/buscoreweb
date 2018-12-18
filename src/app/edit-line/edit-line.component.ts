@@ -66,12 +66,12 @@ export class EditLineComponent implements OnInit {
       numBuracos: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
       numLombadas: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
       numSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-      totalRPNFreiosFabrica: new FormControl(''),
-      totalRPNEmbreagemFabrica: new FormControl(''),
-      totalRPNSuspensaoFabrica: new FormControl(''),
-      totalKmFreiosFabrica: new FormControl(''),
-      totalKmEmbreagemFabrica: new FormControl(''),
-      totalKmSuspensaoFabrica: new FormControl(''),
+      totalRPNFreiosFabrica: new FormControl(0),
+      totalRPNEmbreagemFabrica: new FormControl(0),
+      totalRPNSuspensaoFabrica: new FormControl(0),
+      totalKmFreiosFabrica: new FormControl(0),
+      totalKmEmbreagemFabrica: new FormControl(0),
+      totalKmSuspensaoFabrica: new FormControl(0),
       tipoOnibusId: new FormControl('', [Validators.required])
     })
   }
@@ -84,19 +84,8 @@ export class EditLineComponent implements OnInit {
 
     this.linhaForm.patchValue({
       linhaId: this.linha.linhaId,
-      dataCadastro: this.linha.dataCadastro,
       numeroLinha: this.linha.numeroLinha,
       nomeLinha: this.linha.nomeLinha,
-      numParadas: this.linha.numParadas,
-      numBuracos: this.linha.numBuracos,
-      numLombadas: this.linha.numLombadas,
-      numSemaforo: this.linha.numSemaforo,
-      totalRPNFreiosFabrica: this.linha.totalRPNFreiosFabrica,
-      totalRPNEmbreagemFabrica: this.linha.totalRPNEmbreagemFabrica,
-      totalRPNSuspensaoFabrica: this.linha.totalRPNSuspensaoFabrica,
-      totalKmFreiosFabrica: this.linha.totalKmFreiosFabrica,
-      totalKmEmbreagemFabrica: this.linha.totalKmEmbreagemFabrica,
-      totalKmSuspensaoFabrica: this.linha.totalKmSuspensaoFabrica,
       tipoOnibusId: this.linha.tipoOnibusId
     });
 
@@ -133,7 +122,7 @@ export class EditLineComponent implements OnInit {
       result => {
         this._toastr.success("Linha atualizada com sucesso!", "Registro atualizado")
         this.isSubmitting = false
-        this._routerNavigate.navigate(['/view-line']);
+        this._routerNavigate.navigate(['/viewLine']);
       },
       error => {
         console.log(error)
