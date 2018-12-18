@@ -107,6 +107,10 @@ export class EditLineComponent implements OnInit {
   }
 
   onChange() {
+    this.setSelectedOnibus()
+  }
+
+  setSelectedOnibus(){
     const values = this.linhaForm.value
 
     if (!values) return
