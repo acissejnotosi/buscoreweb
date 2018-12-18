@@ -16,4 +16,5 @@ export interface ILinha {
 	tipoOnibusId: number;
 	tipoOnibusNome: string;
 	pesoOnibus: number;
+	
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { LinhaService } from '../services/linha.service';
 import { ILinha } from '../models/linha.model';
-
+import { Router } from '@angular/router';
 @Component({
 	selector: 'app-rpncalculator',
 	templateUrl: './rpncalculator.component.html',
@@ -10,6 +10,7 @@ import { ILinha } from '../models/linha.model';
 export class RPNCalculatorComponent implements OnInit {
 
 	linhas: ILinha[]
+	linha:ILinha
 	type1: string
 	type2: string
 	type3: string
@@ -36,7 +37,7 @@ export class RPNCalculatorComponent implements OnInit {
 	KmFreioF: number
 	KmEmbreagemF: number
 
-	constructor(private _linhaService: LinhaService) { }
+	constructor(private _linhaService: LinhaService, private _router: Router) { }
 
 	ngOnInit() {
 		this.getLinhas()
@@ -70,7 +71,7 @@ export class RPNCalculatorComponent implements OnInit {
 	}
 
 	setRPNAndKm(){
-       console.log(this.selecao)
+        console.log(this.selecao)
 		if(this.selecao == "suspension" ){
 			this.type1 = "Buracos"
 			this.type2 = "Redutores"
@@ -79,7 +80,7 @@ export class RPNCalculatorComponent implements OnInit {
 				(this.ocorSuspensao * this.seveSuspensao * this.deteSuspensao) + 
 				(this.ocorFreio * this.seveFreio * this.deteFreio) +
 				(this.ocorEmbreagem * this.seveEmbreagem * this.deteEmbreagem)
-			this.KmSuspensao = ((this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
+			this.KmSuspensao = (( this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
 		}else
 		if(this.selecao == "brakes" ){
 			this.type1 = "Pontos de parada"
@@ -101,6 +102,11 @@ export class RPNCalculatorComponent implements OnInit {
 				(this.ocorEmbreagem * this.seveEmbreagem * this.deteEmbreagem)
 			this.KmSuspensao = ((this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
 		}
+	}
+
+	editarLinha(linha: ILinha) {
+		console.log(linha)
+		this._router.navigate(['/edit-line', linha.linhaId]);
 	}
 
 
