@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic/src/platform_providers';
-import { IAuxTable } from '../models/auxtable.model';
 import { DeteccaoService } from '../services/deteccao.service'
 import { SeveridadeService } from '../services/severidade.service'
 import { OcorrenciaService } from '../services/ocorrencia.service'
 import { IDeteccao } from '../models/detecacao.model';
 import { IOcorrencia } from '../models/ocorrencia.model';
 import { ISeveridade } from '../models/severidade.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const TYPE1 : string = "type1"
 const TYPE2 : string = "type2"
@@ -29,7 +28,9 @@ export class AuxiliaryTableComponent implements OnInit {
 
   constructor( private _deteccaoTableService: DeteccaoService,
     private _severidadeTableService: SeveridadeService,
-    private _ocorrenciaTableService: OcorrenciaService
+    private _ocorrenciaTableService: OcorrenciaService,
+    private _routerNavigate: Router,
+    private _router: ActivatedRoute
     ) { }
 
   ngOnInit() {
@@ -95,6 +96,10 @@ export class AuxiliaryTableComponent implements OnInit {
       })
       
       
+  }
+
+  editarTabela() {
+    this._routerNavigate.navigate(['/view-line']);
   }
 
 

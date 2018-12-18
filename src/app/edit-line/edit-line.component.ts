@@ -19,7 +19,7 @@ export class EditLineComponent implements OnInit {
   isSubmitting = false
   linha: ILinha
   linhaForm: FormGroup
-
+ 
   constructor(
     private _linhaService: LinhaService,
     private _tipoOnibusService: TipoOnibusService,

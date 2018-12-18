@@ -1,27 +1,29 @@
-<div class="contentBox-small">
+<div class="contentBox-small" style="width: 1100px;">
   <div class="content-whole">
     <h1 style="text-align: center;">Calcular RPN</h1>
     <div style="padding: 50px; font-size: 20px;">
-      <div style="width: 45%">
+      <div style="width: 50%">
         Selecionar Linha:
         <br />
-        <select name="busline" id="appearance-select">
-          <option>Interbairros II</option>
+        <select  class="form-control" name="busline" id="appearance-select" [(ngModel)]="selectedLinha" (change)="setRPNAndKm()">
+          <option *ngFor="let linha of linhas" [value]="linha.linhaId">{{linha.nomeLinha}}</option>
         </select>
       </div>
-      <div style="width: 45%">
+      <div style="width: 50%">
         Componente:
         <br />
-        <select name="component" id="appearance-select" [(ngModel)]="selecao"  (change)="setRPNAndKm()">
+        <select  class="form-control" name="component"  data-live-search="true" id="appearance-select"
+         [(ngModel)]="selecao"[disabled]="!isEnablingComponent" (change)="setRPNAndKm()">
           <option value="suspension">Suspensão</option>
           <option value="brakes">Freios</option>
           <option value="clutch">Embreagem</option>
         </select>
       </div>
 
-      <table border="1" style="margin-top: 20px;">
-        <thead>
-          <tr>
+      Preencha a tabela abaixo para obter os resultados:
+      <table  class="table table-striped">
+        <thead class="thead-dark">
+          <tr >
             <th>Descrição</th>
             <th>
               <a data-toggle="modal" href="#myModalOcorrencia">Ocorrência</a>
@@ -72,8 +74,8 @@
               </div>
 
             </th>
-            <th> 
-              
+            <th>
+
               <a data-toggle="modal" href="#myModalDeteccao">Deteccao</a>
               <!-- Modal -->
               <div class="modal fade" id="myModalDeteccao" role="dialog">
@@ -94,7 +96,8 @@
                   </div>
 
                 </div>
-              </div></th>
+              </div>
+            </th>
             <th>
               <b>RPN</b>
             </th>
@@ -104,39 +107,78 @@
           <tr>
             <td>{{type1}}</td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="ocorSuspensao" (change)="setRPNAndKm()"/>
+              <input   [disabled]="!isEnablingTable"  class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorSuspensao" (change)="setRPNAndKm()" />
+              
+                <div *ngIf="ocorSuspensao <1 || ocorSuspensao > 10"
+                  class="error-validation">
+                  O valor deve ser entre 1-10.
+                </div>
+                 
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="seveSuspensao" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable"  class="form-control" type="text" autocomplete="off" [(ngModel)]="seveSuspensao" (change)="setRPNAndKm()" />
+              <div *ngIf="seveSuspensao <1 || seveSuspensao > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="deteSuspensao" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable"  class="form-control" type="text" autocomplete="off" [(ngModel)]="deteSuspensao" (change)="setRPNAndKm()" />
+              <div *ngIf="deteSuspensao <1 || deteSuspensao > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
             </td>
             <td>{{ocorSuspensao * seveSuspensao * deteSuspensao}}</td>
           </tr>
           <tr>
             <td>{{type2}}</td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="ocorFreio" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable"  class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorFreio" (change)="setRPNAndKm()" />
+              <div *ngIf="ocorFreio <1 || ocorFreio > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="seveFreio" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable"  class="form-control" type="text" autocomplete="off" [(ngModel)]="seveFreio" (change)="setRPNAndKm()" />
+              <div *ngIf="seveFreio <1 || seveFreio > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
             </td>
             <td>
-              <input type="text" autocomplete="off"  [(ngModel)]="deteFreio" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable"  class="form-control" type="text" autocomplete="off" [(ngModel)]="deteFreio" (change)="setRPNAndKm()" />
+              <div *ngIf="deteFreio <1 || deteFreio > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
             </td>
             <td>{{ocorFreio * seveFreio * deteFreio}}</td>
           </tr>
           <tr>
             <td>{{type3}}</td>
             <td>
-              <input type="text" autocomplete="off" [(ngModel)]="ocorEmbreagem" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorEmbreagem" (change)="setRPNAndKm()" />
+              <div *ngIf="ocorEmbreagem <1 || ocorEmbreagem > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
             </td>
             <td>
-              <input type="text" autocomplete="off" [(ngModel)]="seveEmbreagem" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveEmbreagem" (change)="setRPNAndKm()" />
+              <div *ngIf="seveEmbreagem <1 || seveEmbreagem > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
             </td>
             <td>
-              <input type="text" autocomplete="off" [(ngModel)]="deteEmbreagem" (change)="setRPNAndKm()"/>
+              <input  [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteEmbreagem" (change)="setRPNAndKm()" />
+              <div *ngIf="deteEmbreagem <1 || deteEmbreagem > 10"
+                class="error-validation">
+                O valor deve ser entre 1-10.
+              </div>
+            
             </td>
             <td>{{ocorEmbreagem * seveEmbreagem * deteEmbreagem}}</td>
           </tr>
@@ -149,8 +191,8 @@
         <p>
           <b>Resultados</b>
         </p>
-        <table>
-          <thead>
+        <table class="table table-striped">
+          <thead class="thead-dark">
             <tr>
               <th style="width: 25%">Suspensão</th>
               <th style="width: 25%">Freios</th>
@@ -175,8 +217,9 @@
           </tbody>
         </table>
       </div>
-      <button style="margin-top: 20px;" id="appearance-button">Gerar Relatórios</button>
-      <button style="margin-top: 20px;" id="appearance-button">Salvar Relatório</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!isSaving" style='margin:10px'>Salvar Análise</button>
+      <button class="btn btn-primary" (click)="redirecionarParaGerarRelatorio(linha)" [disabled]="!isRedirecting" role="button"
+        style='margin:10px'>Gerar Relatório</button>
     </div>
   </div>
 </div>

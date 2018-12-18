@@ -1,34 +1,38 @@
 <div class="contentBox-small">
   <div class="content-whole">
     <h1 style="text-align: center;">Histórico Buracos</h1>
-    <div style="display: inline-block; width: 40%">
-      Selecionar Linha:<br />
-      <select name="busline" id="appearance-select">
-        <option selected>Todas</option>
-        <option>Circular Centro (Horário)</option>
-        <option>Interbairros II</option>
-        <option>Outro</option>
-      </select>
-    </div>
+  
+      <div style="width: 50%">
+        Selecionar Linha:
+        <br />
+        <select class="form-control" [(ngModel)]="selectedLinha"  name="busline" id="appearance-select" (change) = "filtrarLinha(selectedLinha)">
+         <option [value]="Todas" >Todas</option>
+          <option *ngFor="let eachlinha of linhasSelect" [value]="eachlinha.linhaId">{{eachlinha.nomeLinha}}</option>
+        </select>
+      </div>
 
-    <table style="margin-top: 10px;">
-      <thead>
-        <tr>
-          <th>&nbsp;</th>
-          <th>Nome da Linha</th>
-          <th>Número de Buracos</th>
-          <th>Data de Registro</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><input type="checkbox" /></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-      </tbody>
-    </table>
-    <button style="margin-top: 20px;" id="appearance-button">Apagar Seleção</button>
+      
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>&nbsp;</th>
+              <th>Nome da Linha</th>
+              <th>Número de Buracos</th>
+              <th>Data de Registro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let linha of linhas">
+              <td>
+                <input type="checkbox" />
+              </td>
+              <td>{{linha.nomeLinha}}</td>
+              <td>{{linha.numBuracos}}</td>
+              <td>colocar data</td>
+            </tr>
+          </tbody>
+        </table>
+    
+      <button style="margin-top: 20px;" id="appearance-button">Apagar Seleção</button>
+    
   </div>
-</div>
