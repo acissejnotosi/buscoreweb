@@ -12,7 +12,7 @@
       <div style="width: 45%">
         Componente:
         <br />
-        <select name="component" id="appearance-select" [(ngModel)]="selecao">
+        <select name="component" id="appearance-select" [(ngModel)]="selecao"  (change)="setRPNAndKm()">
           <option value="suspension">Suspensão</option>
           <option value="brakes">Freios</option>
           <option value="clutch">Embreagem</option>
@@ -102,7 +102,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Buracos</td>
+            <td>{{type1}}</td>
             <td>
               <input type="text" autocomplete="off"  [(ngModel)]="ocorSuspensao" (change)="setRPNAndKm()"/>
             </td>
@@ -115,7 +115,7 @@
             <td>{{ocorSuspensao * seveSuspensao * deteSuspensao}}</td>
           </tr>
           <tr>
-            <td>Redutores</td>
+            <td>{{type2}}</td>
             <td>
               <input type="text" autocomplete="off"  [(ngModel)]="ocorFreio" (change)="setRPNAndKm()"/>
             </td>
@@ -128,7 +128,7 @@
             <td>{{ocorFreio * seveFreio * deteFreio}}</td>
           </tr>
           <tr>
-            <td>Carga</td>
+            <td>{{type3}}</td>
             <td>
               <input type="text" autocomplete="off" [(ngModel)]="ocorEmbreagem" (change)="setRPNAndKm()"/>
             </td>

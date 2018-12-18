@@ -10,6 +10,9 @@ import { ILinha } from '../models/linha.model';
 export class RPNCalculatorComponent implements OnInit {
 
 	linhas: ILinha[]
+	type1: string
+	type2: string
+	type3: string
 	selecao: any
 	ocorSuspensao: number
 	seveSuspensao: number
@@ -48,6 +51,9 @@ export class RPNCalculatorComponent implements OnInit {
 		this.deteEmbreagem = 0
 		this.RPNTSuspensaoF = 10 //depois pegar do banco de dados
 		this.KmSuspensaoF = 10 //depois pegar do banco de dados
+		this.type1 = " "
+		this.type2 = " "
+		this.type3 = " "
 	}
 
 
@@ -64,22 +70,31 @@ export class RPNCalculatorComponent implements OnInit {
 	}
 
 	setRPNAndKm(){
-
-		if(this.selecao = "suspension" ){
+       console.log(this.selecao)
+		if(this.selecao == "suspension" ){
+			this.type1 = "Buracos"
+			this.type2 = "Redutores"
+			this.type3 = "Carga(Kg)" 
 			this.RPNTSuspensao =
 				(this.ocorSuspensao * this.seveSuspensao * this.deteSuspensao) + 
 				(this.ocorFreio * this.seveFreio * this.deteFreio) +
 				(this.ocorEmbreagem * this.seveEmbreagem * this.deteEmbreagem)
 			this.KmSuspensao = ((this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
 		}else
-		if(this.selecao = "brakes" ){
+		if(this.selecao == "brakes" ){
+			this.type1 = "Pontos de parada"
+			this.type2 = "Semáforos"
+			this.type3 = "Redutores"
 			this.RPNTFreio =
 				(this.ocorFreio * this.seveFreio * this.deteFreio) + 
 				(this.ocorFreio * this.seveFreio * this.deteFreio) +
 				(this.ocorFreio * this.seveFreio * this.deteFreio)
 			this.KmSuspensao = ((this.KmSuspensaoF * this.RPNTSuspensao)/this.RPNTSuspensaoF)
 		}else
-		if(this.selecao = "clutch" ){
+		if(this.selecao == "clutch" ){
+			this.type1 = "Pontos de Parada"
+			this.type2 = "Semáforos"
+			this.type3 = "Redutores"
 			this.RPNTSuspensao =
 				(this.ocorSuspensao * this.seveSuspensao * this.deteSuspensao) + 
 				(this.ocorFreio * this.seveFreio * this.deteFreio) +
