@@ -46,6 +46,7 @@ export class EditLineComponent implements OnInit {
           result => {
             this.linha = result
             this.setForm()
+            this.setSelectedOnibus()
           },
           error => {
             this._toastr.error("Ocorreu um erro ao editar a linha.", "Erro")
