@@ -4,7 +4,7 @@ import { LinhaService } from '../services/linha.service'
 import { TipoOnibusService } from '../services/tipo-onibus.service'
 import { ToastrService } from 'ngx-toastr'
 import { ITipoOnibus } from '../models/tipo-onibus.model'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ILinha } from '../models/linha.model';
 
 @Component({
@@ -24,8 +24,8 @@ export class EditLineComponent implements OnInit {
     private _linhaService: LinhaService,
     private _tipoOnibusService: TipoOnibusService,
     private _toastr: ToastrService,
-    private _fb: FormBuilder,
-    private _router: ActivatedRoute) {
+    private _router: ActivatedRoute,
+    private _routerNavigate: Router) {
 
     this.createForm()
 
@@ -98,7 +98,7 @@ export class EditLineComponent implements OnInit {
       totalKmSuspensaoFabrica: this.linha.totalKmSuspensaoFabrica,
       tipoOnibusId: this.linha.tipoOnibusId
     });
-    
+
     console.log(this.linha)
     console.log(this.linhaForm.value)
 
@@ -128,6 +128,7 @@ export class EditLineComponent implements OnInit {
       result => {
         this._toastr.success("Linha atualizada com sucesso!", "Registro atualizado")
         this.isSubmitting = false
+        this._routerNavigate.navigate(['/view-line']);
       },
       error => {
         console.log(error)
