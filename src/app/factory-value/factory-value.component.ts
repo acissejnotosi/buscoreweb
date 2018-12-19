@@ -38,14 +38,17 @@ export class FactoryValueComponent implements OnInit {
     suspensaoRedutor: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     suspensaoCarga: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     suspensaoKm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+    totalRPNFreiosFabrica: new FormControl(null),
     embreagemParada: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     embreagemSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     embreagemRedutor: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     embreagemKm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+    totalRPNEmbreagemFabrica: new FormControl(null),
     freiosParada: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     freiosSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     freiosRedutor: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    freiosKm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)])
+    freiosKm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+    totalRPNSuspensaoFabrica: new FormControl(null)
 	})
 
   constructor(
@@ -55,7 +58,7 @@ export class FactoryValueComponent implements OnInit {
   ngOnInit() {
     this._linhaService.getLinhas().subscribe(
       result => {
-        this.linha = result
+        this.linhas = result
         this.setForm()
       },
       error => {
@@ -65,33 +68,34 @@ export class FactoryValueComponent implements OnInit {
   }
 
   setForm(){
-    this.linhaForm.patchValue({
+    this.linhaFabricaForm.patchValue({
       linhaId: this.linha.linhaId,
-      suspensaoBuraco: this.linha.suspensaoBuraco,
-      suspensaoRedutor: this.linha.suspensaoRedutor,
-      suspensaoCarga: this.linha.suspensaoCarga,
-      suspensaoKm: this.linha.suspensaoKm,
-      embreagemParada: this.linha.embreagemParada,
-      embreagemSemaforo: this.linha.embreagemSemaforo,
-      embreagemRedutor: this.linha.embreagemRedutor,
-      embreagemKm: this.linha.embreagemKm,
-      freiosParada: this.linha.freiosParada,
-      freiosSemaforo: this.linha.freiosSemaforo,
-      freiosRedutor: this.linha.freiosRedutor,
-      freiosKm: this.linha.freiosKm
+      suspensaoBuraco: this.linha.rpnSuspensaoBuracoFabrica,
+      suspensaoRedutor: this.linha.rpnSuspensaoRedutorFabrica,
+      suspensaoCarga: this.linha.rpnSuspensaoCargaFabrica,
+      suspensaoKm: this.linha.totalKmSuspensaoFabrica,
+      embreagemParada: this.linha.rpnEmbreagemParadaFabrica,
+      embreagemSemaforo: this.linha.rpnEmbreagemSemaforoFabrica,
+      embreagemRedutor: this.linha.rpnEmbreagemRedutorFabrica,
+      embreagemKm: this.linha.totalKmEmbreagemFabrica,
+      freiosParada: this.linha.rpnFreioParadaFabrica,
+      freiosSemaforo: this.linha.rpnFreioSemaforoFabrica,
+      freiosRedutor: this.linha.rpnFreioRedutorFabrica,
+      freiosKm: this.linha.totalKmFreiosFabrica
     });
 
-    this.suspensaoBuraco = this.linha.suspensaoBuraco
-    this.suspensaoRedutor = this.linha.suspensaoRedutor
-    this.suspensaoCarga = this.linha.suspensaoCarga
-    this.suspensaokm = this.linha.suspensaokm
-    this.embreagemParada = this.linha.embreagemParada
-    this.embreagemSemaforo = this.linha.embreagemSemaforo
-    this.embreagemRedutor = this.linha.this.embreagemRedutor
-    this.embreagemKm = this.linha.embreagemKm
-    this.freiosParada = this.linha.freiosParada
-    this.freiosSemaforo = this.linha.freiosSemaforo
-    this.freiosKm = this.linha.freiosKm
+    this.suspensaoBuraco = this.linha.rpnSuspensaoBuracoFabrica
+    this.suspensaoRedutor = this.linha.rpnSuspensaoRedutorFabrica
+    this.suspensaoCarga = this.linha.rpnSuspensaoCargaFabrica
+    this.suspensaoKm = this.linha.totalKmSuspensaoFabrica
+    this.embreagemParada = this.linha.rpnEmbreagemParadaFabrica
+    this.embreagemSemaforo = this.linha.rpnEmbreagemSemaforoFabrica
+    this.embreagemRedutor = this.linha.rpnEmbreagemRedutorFabrica
+    this.embreagemKm = this.linha.totalKmEmbreagemFabrica
+    this.freiosParada = this.linha.rpnFreioParadaFabrica
+    this.freiosSemaforo = this.linha.rpnFreioSemaforoFabrica
+    this.freiosRedutor = this.linha.rpnFreioRedutorFabrica
+    this.freiosKm = this.linha.totalKmFreiosFabrica
 
     this.linhaFabricaForm.markAsUntouched()
     this.linhaFabricaForm.markAsPristine()
