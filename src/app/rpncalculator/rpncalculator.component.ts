@@ -21,23 +21,24 @@ export class RPNCalculatorComponent implements OnInit {
 	type2: string
 	type3: string
 	selecao: any
-	ocorSuspensao: number
-	seveSuspensao: number
-	deteSuspensao: number
-	ocorFreio: number
-	seveFreio: number
-	deteFreio: number
-	ocorEmbreagem: number
-	seveEmbreagem: number
-	deteEmbreagem: number
+	ocorRow1: number
+	seveRow1: number
+	deteRow1: number
+	ocorRow2: number
+	seveRow2: number
+	deteRow2: number
+	ocorRow3: number
+	seveRow3: number
+	deteRow3: number
 	RPNTSuspensao: number
 	RPNTFreio: number
 	RPNTEmgreagem: number
 	KmSuspensao: number 
 	KmFreio: number
 	KmEmbreagem: number
-
-
+	tableSuspensionEnabled :  any
+	tableBrakesEnabled : any
+	tableClutchEnabled : any
 	constructor(private _linhaService: LinhaService,  private _toastr: ToastrService, private _router: Router) { }
 
 	ngOnInit() {
@@ -86,71 +87,73 @@ export class RPNCalculatorComponent implements OnInit {
 		this.getLinhaById(this.selectedLinha)
 		
 		if(this.selecao == "suspension"){
-		if(this.linha.totalKmSuspensaoFabrica  && this.linha.totalRPNSuspensaoFabrica ){
+		//if(this.linha.totalKmSuspensaoFabrica  && this.linha.totalRPNSuspensaoFabrica ){
 				this.isEnablingTable = true
 				this.type1 = "Buracos"
 				this.type2 = "Redutores"
 				this.type3 = "Carga(Kg)" 
 				this.RPNTSuspensao =
-					(this.ocorSuspensao * this.seveSuspensao * this.deteSuspensao) + 
-					(this.ocorFreio * this.seveFreio * this.deteFreio) +
-					(this.ocorEmbreagem * this.seveEmbreagem * this.deteEmbreagem)
+					((this.ocorRow1 * this.seveRow1 * this.deteRow1) + 
+					(this.ocorRow2 * this.seveRow2 * this.deteRow2) +
+					(this.ocorRow3 * this.seveRow3 * this.deteRow3))
 				this.KmSuspensao = (( this.linha.totalKmSuspensaoFabrica * this.RPNTSuspensao)/this.linha.totalRPNSuspensaoFabrica)
-			}else{
-				this._toastr.error("Não há Valores de Fábrica para a Suspensão", "Cadastre os valores de fábrica através do menu")
-				//this.clearTable()
-			}
+			//}else{
+			//	this._toastr.error("Não há Valores de Fábrica para a Suspensão", "Cadastre os valores de fábrica através do menu")
+			//	this.clearTable()
+			//}
 		}else
 		if(this.selecao == "brakes" ){
-			if(this.linha.totalKmFreiosFabrica && this.linha.totalRPNFreiosFabrica){
+			//if(this.linha.totalKmFreiosFabrica && this.linha.totalRPNFreiosFabrica){
 				this.isEnablingTable = true
 				this.type1 = "Pontos de parada"
 				this.type2 = "Semáforos"
 				this.type3 = "Redutores"
 				this.RPNTFreio =
-					(this.ocorFreio * this.seveFreio * this.deteFreio) + 
-					(this.ocorFreio * this.seveFreio * this.deteFreio) +
-					(this.ocorFreio * this.seveFreio * this.deteFreio)
+				((this.ocorRow1 * this.seveRow1 * this.deteRow1) + 
+				(this.ocorRow2 * this.seveRow2 * this.deteRow2) +
+				(this.ocorRow3 * this.seveRow3 * this.deteRow3))
 				this.KmSuspensao = ((this.linha.totalKmFreiosFabrica * this.RPNTFreio)/this.linha.totalRPNFreiosFabrica)
-			}else{
-				this._toastr.error("Não há Valores de Fábrica para os Freios", "Cadastre os valores de fábrica através do menu")
-				this.clearTable()
-			}
+			//}else{
+			//	this._toastr.error("Não há Valores de Fábrica para os Freios", "Cadastre os valores de fábrica através do menu")
+			//	this.clearTable()
+			//}
 		}else
 		if(this.selecao == "clutch" ){
-			if(this.linha.totalKmEmbreagemFabrica && this.linha.totalRPNEmbreagemFabrica ){
+
+			console.log("entrou na embreagem")
+			//if(this.linha.totalKmEmbreagemFabrica && this.linha.totalRPNEmbreagemFabrica ){
 				this.isEnablingTable = true
 				this.type1 = "Pontos de Parada"
 				this.type2 = "Semáforos"
 				this.type3 = "Redutores"
-				this.RPNTSuspensao =
-					(this.ocorSuspensao * this.seveSuspensao * this.deteSuspensao) + 
-					(this.ocorFreio * this.seveFreio * this.deteFreio) +
-					(this.ocorEmbreagem * this.seveEmbreagem * this.deteEmbreagem)
-				this.KmSuspensao = ((this.linha.totalKmEmbreagemFabrica * this.RPNTEmgreagem)/this.linha.totalRPNEmbreagemFabrica)
-			}else{
-				this._toastr.error("Não há valores de Fábrica para a Embreagem", "Cadastre os valores de fábrica através do menu")
-                this.clearTable()
-			}
+				this.RPNTEmgreagem =
+				((this.ocorRow1 * this.seveRow1 * this.deteRow1) + 
+				(this.ocorRow2 * this.seveRow2 * this.deteRow2) +
+				(this.ocorRow3 * this.seveRow3 * this.deteRow3))
+				this.KmEmbreagem = ((this.linha.totalKmEmbreagemFabrica * this.RPNTEmgreagem)/this.linha.totalRPNEmbreagemFabrica)
+			//}else{
+			//	this._toastr.error("Não há valores de Fábrica para a Embreagem", "Cadastre os valores de fábrica através do menu")
+            //    this.clearTable()
+			//}
 		}
 
 	}
 
 	clearTable(){
 	
-		this.isEnablingTable = false
+		this.isEnablingTable = true
 		this.type1 = ""
 		this.type2 = ""
 		this.type3 = ""
-		this.ocorSuspensao = undefined
-		this.seveSuspensao = undefined
-		this.deteSuspensao =undefined
-		this.ocorFreio = undefined
-		this.seveFreio = undefined
-		this.deteFreio = undefined
-		this.ocorEmbreagem = undefined
-		this.seveEmbreagem = undefined
-		this.deteEmbreagem = undefined
+		this.ocorRow1 = undefined
+		this.seveRow1 = undefined
+		this.deteRow1 =undefined
+		this.ocorRow2 = undefined
+		this.seveRow2 = undefined
+		this.deteRow2 = undefined
+		this.ocorRow3 = undefined
+		this.seveRow3 = undefined
+		this.deteRow3 = undefined
 		this.RPNTSuspensao= undefined
 		this.RPNTFreio= undefined
 		this.RPNTEmgreagem= undefined
@@ -183,6 +186,7 @@ export class RPNCalculatorComponent implements OnInit {
 		  result => {
 			this._toastr.success("Valores Calculados para essa linha salvos com sucesso!", "Novos valores salvos na base de dados")
 			this.isSaving = false
+			this.setLocalStorage()
 		//	this._routerNavigate.navigate(['/view-line']);
 		  },
 		  error => {
@@ -193,4 +197,46 @@ export class RPNCalculatorComponent implements OnInit {
 		)
 	}
 
+	setLocalStorage(){
+		// Check browser support
+		if (typeof(Storage) !== "undefined") {
+			// Store
+			console.log("entrou")
+
+			localStorage.setItem("ocorSuspensao", JSON.stringify(this.ocorRow1));
+			localStorage.setItem("seveSuspensao", JSON.stringify(this.seveRow1));
+			localStorage.setItem("deteSuspensao", JSON.stringify(this.deteRow1));
+			localStorage.setItem("ocorFreio",JSON.stringify(this.ocorRow2));
+			localStorage.setItem("seveFreio", JSON.stringify(this.seveRow2));
+			localStorage.setItem("deteFreio",JSON.stringify(this.deteRow2));
+			localStorage.setItem("ocorEmbreagem", JSON.stringify(this.ocorRow3));
+			localStorage.setItem("seveEmbreagem",JSON.stringify(this.seveRow3));
+			localStorage.setItem("deteEmbreagem", JSON.stringify(this.deteRow3));
+
+			// Retrieve
+		//	document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+		} else {
+			document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+		}
+	}
+
+	tableSuspensao(){
+
+		if (this.selecao == "suspension"){
+			this.tableSuspensionEnabled = true
+			this.tableClutchEnabled = false
+			this.tableBrakesEnabled = false
+		}else if (this.selecao == "brakes"){
+			this.tableSuspensionEnabled = false
+			this.tableClutchEnabled = false
+			this.tableBrakesEnabled = true
+		}
+		else if (this.selecao == "clutch"){
+			this.tableSuspensionEnabled = false
+			this.tableClutchEnabled = true
+			this.tableBrakesEnabled = false
+
+		}
+	
+	}
 }
