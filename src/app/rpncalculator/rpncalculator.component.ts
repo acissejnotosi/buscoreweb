@@ -21,15 +21,33 @@ export class RPNCalculatorComponent implements OnInit {
 	type2: string
 	type3: string
 	selecao: any
-	ocorRow1: number
-	seveRow1: number
-	deteRow1: number
-	ocorRow2: number
-	seveRow2: number
-	deteRow2: number
-	ocorRow3: number
-	seveRow3: number
-	deteRow3: number
+	ocorRow1S: number
+	seveRow1S: number
+	deteRow1S: number
+	ocorRow2S: number
+	seveRow2S: number
+	deteRow2S: number
+	ocorRow3S: number
+	seveRow3S: number
+	deteRow3S: number
+	ocorRow1F: number
+	seveRow1F: number
+	deteRow1F: number
+	ocorRow2F: number
+	seveRow2F: number
+	deteRow2F: number
+	ocorRow3F: number
+	seveRow3F: number
+	deteRow3F: number
+	ocorRow1E: number
+	seveRow1E: number
+	deteRow1E: number
+	ocorRow2E: number
+	seveRow2E: number
+	deteRow2E: number
+	ocorRow3E: number
+	seveRow3E: number
+	deteRow3E: number
 	RPNTSuspensao: number
 	RPNTFreio: number
 	RPNTEmgreagem: number
@@ -80,12 +98,13 @@ export class RPNCalculatorComponent implements OnInit {
 		)
 	}
 
-	setRPNAndKm(){
+	SetEnablingTable(){
 
+		this.isEnablingTable = true
+	}
 
-		
-		this.getLinhaById(this.selectedLinha)
-		
+	setRPNAndKmSuspensao(){
+		this.getLinhaById(this.selectedLinha)		
 		if(this.selecao == "suspension"){
 		//if(this.linha.totalKmSuspensaoFabrica  && this.linha.totalRPNSuspensaoFabrica ){
 				this.isEnablingTable = true
@@ -93,15 +112,18 @@ export class RPNCalculatorComponent implements OnInit {
 				this.type2 = "Redutores"
 				this.type3 = "Carga(Kg)" 
 				this.RPNTSuspensao =
-					((this.ocorRow1 * this.seveRow1 * this.deteRow1) + 
-					(this.ocorRow2 * this.seveRow2 * this.deteRow2) +
-					(this.ocorRow3 * this.seveRow3 * this.deteRow3))
+					((this.ocorRow1S * this.seveRow1S * this.deteRow1S) + 
+					(this.ocorRow2S * this.seveRow2S * this.deteRow2S) +
+					(this.ocorRow3S * this.seveRow3S * this.deteRow3S))
 				this.KmSuspensao = (( this.linha.totalKmSuspensaoFabrica * this.RPNTSuspensao)/this.linha.totalRPNSuspensaoFabrica)
 			//}else{
 			//	this._toastr.error("Não há Valores de Fábrica para a Suspensão", "Cadastre os valores de fábrica através do menu")
 			//	this.clearTable()
 			//}
-		}else
+		}
+	}
+	
+	setRPNAndKmFreio(){
 		if(this.selecao == "brakes" ){
 			//if(this.linha.totalKmFreiosFabrica && this.linha.totalRPNFreiosFabrica){
 				this.isEnablingTable = true
@@ -109,15 +131,18 @@ export class RPNCalculatorComponent implements OnInit {
 				this.type2 = "Semáforos"
 				this.type3 = "Redutores"
 				this.RPNTFreio =
-				((this.ocorRow1 * this.seveRow1 * this.deteRow1) + 
-				(this.ocorRow2 * this.seveRow2 * this.deteRow2) +
-				(this.ocorRow3 * this.seveRow3 * this.deteRow3))
+				((this.ocorRow1F * this.seveRow1F * this.deteRow1F) + 
+				(this.ocorRow2F * this.seveRow2F * this.deteRow2F) +
+				(this.ocorRow3F * this.seveRow3F * this.deteRow3F))
 				this.KmSuspensao = ((this.linha.totalKmFreiosFabrica * this.RPNTFreio)/this.linha.totalRPNFreiosFabrica)
 			//}else{
 			//	this._toastr.error("Não há Valores de Fábrica para os Freios", "Cadastre os valores de fábrica através do menu")
 			//	this.clearTable()
 			//}
-		}else
+		}
+	}
+
+	setRPNAndKmEmbreagem(){
 		if(this.selecao == "clutch" ){
 
 			console.log("entrou na embreagem")
@@ -127,17 +152,18 @@ export class RPNCalculatorComponent implements OnInit {
 				this.type2 = "Semáforos"
 				this.type3 = "Redutores"
 				this.RPNTEmgreagem =
-				((this.ocorRow1 * this.seveRow1 * this.deteRow1) + 
-				(this.ocorRow2 * this.seveRow2 * this.deteRow2) +
-				(this.ocorRow3 * this.seveRow3 * this.deteRow3))
+				((this.ocorRow1E * this.seveRow1E * this.deteRow1E) + 
+				(this.ocorRow2E * this.seveRow2E * this.deteRow2E) +
+				(this.ocorRow3E * this.seveRow3E * this.deteRow3E))
 				this.KmEmbreagem = ((this.linha.totalKmEmbreagemFabrica * this.RPNTEmgreagem)/this.linha.totalRPNEmbreagemFabrica)
 			//}else{
 			//	this._toastr.error("Não há valores de Fábrica para a Embreagem", "Cadastre os valores de fábrica através do menu")
             //    this.clearTable()
 			//}
 		}
-
 	}
+
+	
 
 	clearTable(){
 	
@@ -145,15 +171,15 @@ export class RPNCalculatorComponent implements OnInit {
 		this.type1 = ""
 		this.type2 = ""
 		this.type3 = ""
-		this.ocorRow1 = undefined
-		this.seveRow1 = undefined
-		this.deteRow1 =undefined
-		this.ocorRow2 = undefined
-		this.seveRow2 = undefined
-		this.deteRow2 = undefined
-		this.ocorRow3 = undefined
-		this.seveRow3 = undefined
-		this.deteRow3 = undefined
+		this.ocorRow1S = undefined
+		this.seveRow1S = undefined
+		this.deteRow1S =undefined
+		this.ocorRow2S = undefined
+		this.seveRow2S = undefined
+		this.deteRow2S = undefined
+		this.ocorRow3S = undefined
+		this.seveRow3S = undefined
+		this.deteRow3S = undefined
 		this.RPNTSuspensao= undefined
 		this.RPNTFreio= undefined
 		this.RPNTEmgreagem= undefined
@@ -203,15 +229,15 @@ export class RPNCalculatorComponent implements OnInit {
 			// Store
 			console.log("entrou")
 
-			localStorage.setItem("ocorSuspensao", JSON.stringify(this.ocorRow1));
-			localStorage.setItem("seveSuspensao", JSON.stringify(this.seveRow1));
-			localStorage.setItem("deteSuspensao", JSON.stringify(this.deteRow1));
-			localStorage.setItem("ocorFreio",JSON.stringify(this.ocorRow2));
-			localStorage.setItem("seveFreio", JSON.stringify(this.seveRow2));
-			localStorage.setItem("deteFreio",JSON.stringify(this.deteRow2));
-			localStorage.setItem("ocorEmbreagem", JSON.stringify(this.ocorRow3));
-			localStorage.setItem("seveEmbreagem",JSON.stringify(this.seveRow3));
-			localStorage.setItem("deteEmbreagem", JSON.stringify(this.deteRow3));
+			localStorage.setItem("ocorSuspensao", JSON.stringify(this.ocorRow1S));
+			localStorage.setItem("seveSuspensao", JSON.stringify(this.seveRow1S));
+			localStorage.setItem("deteSuspensao", JSON.stringify(this.deteRow1S));
+			localStorage.setItem("ocorFreio",JSON.stringify(this.ocorRow2S));
+			localStorage.setItem("seveFreio", JSON.stringify(this.seveRow2S));
+			localStorage.setItem("deteFreio",JSON.stringify(this.deteRow2S));
+			localStorage.setItem("ocorEmbreagem", JSON.stringify(this.ocorRow3S));
+			localStorage.setItem("seveEmbreagem",JSON.stringify(this.seveRow3S));
+			localStorage.setItem("deteEmbreagem", JSON.stringify(this.deteRow3S));
 
 			// Retrieve
 		//	document.getElementById("result").innerHTML = localStorage.getItem("lastname");

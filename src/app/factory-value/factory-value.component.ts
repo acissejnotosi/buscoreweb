@@ -52,7 +52,9 @@ export class FactoryValueComponent implements OnInit {
     private _linhaService: LinhaService,
     private _toastrService: ToastrService) { }
 
-  ngOnInit() {
+ngOnInit(){}
+
+ /*  ngOnInit() {
     this._linhaService.getLinhas().subscribe(
       result => {
         this.linha = result
@@ -62,9 +64,9 @@ export class FactoryValueComponent implements OnInit {
         this._toastrService.error(error.error, "Erro ao carregar as linhas")
       }
     )
-  }
+  } */
 
-  setForm(){
+/*   setForm(){
     this.linhaForm.patchValue({
       linhaId: this.linha.linhaId,
       suspensaoBuraco: this.linha.suspensaoBuraco,
@@ -96,7 +98,7 @@ export class FactoryValueComponent implements OnInit {
     this.linhaFabricaForm.markAsUntouched()
     this.linhaFabricaForm.markAsPristine()
   }
-
+ */
   onSubmit(){
     console.log(this.linhaFabricaForm)
 
