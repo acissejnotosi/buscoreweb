@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { LinhaService } from '../services/linha.service';
 import { ILinha } from '../models/linha.model';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr'
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
 	selector: 'app-rpncalculator',
@@ -63,7 +64,33 @@ export class RPNCalculatorComponent implements OnInit {
 		this.isEnablingComponent = false
 		this.isEnablingTable = false
 		this.getLinhas()
-		
+		this.ocorRow1S =0
+		this.seveRow1S =  0
+		this.deteRow1S = 0
+		this.ocorRow2S= 0
+		this.seveRow2S= 0
+		this.deteRow2S= 0
+		this.ocorRow3S= 0
+		this.seveRow3S= 0
+		this.deteRow3S= 0
+		this.ocorRow1F= 0
+		this.seveRow1F= 0
+		this.deteRow1F= 0
+		this.ocorRow2F= 0
+		this.seveRow2F= 0
+		this.deteRow2F= 0
+		this.ocorRow3F= 0
+		this.seveRow3F= 0
+		this.deteRow3F= 0
+		this.ocorRow1E= 0
+		this.seveRow1E= 0
+		this.deteRow1E= 0
+		this.ocorRow2E= 0
+		this.seveRow2E= 0
+		this.deteRow2E= 0
+		this.ocorRow3E= 0
+		this.seveRow3E= 0
+		this.deteRow3E= 0
 		this.isSaving = false
 		this.isRedireting = false
 		this.type1 = " "
@@ -101,12 +128,15 @@ export class RPNCalculatorComponent implements OnInit {
 	SetEnablingTable(){
 
 		this.isEnablingTable = true
+		this.getLinhaById(this.selectedLinha)
 	}
 
 	setRPNAndKmSuspensao(){
+		console.log(this.linha)
+		console.log(this.linha.totalKmSuspensaoFabrica)
+		console.log( this.linha.totalRPNSuspensaoFabrica)
 	
-	
-		//if(this.linha.totalKmSuspensaoFabrica  && this.linha.totalRPNSuspensaoFabrica ){
+		if(this.linha.totalKmSuspensaoFabrica  && this.linha.totalRPNSuspensaoFabrica ){
 				this.isEnablingTable = true
 				this.type1 = "Buracos"
 				this.type2 = "Redutores"
@@ -115,17 +145,20 @@ export class RPNCalculatorComponent implements OnInit {
 					((this.ocorRow1S * this.seveRow1S * this.deteRow1S) + 
 					(this.ocorRow2S * this.seveRow2S * this.deteRow2S) +
 					(this.ocorRow3S * this.seveRow3S * this.deteRow3S))
-				this.KmSuspensao = (( this.linha.totalKmSuspensaoFabrica * this.RPNTSuspensao)/this.linha.totalRPNSuspensaoFabrica)
-			//}else{
-			//	this._toastr.error("Não há Valores de Fábrica para a Suspensão", "Cadastre os valores de fábrica através do menu")
-			//	this.clearTable()
-			//}
+				this.KmSuspensao = (( 1* this.RPNTSuspensao)/1)
+
+			
+
+			}else{
+				this._toastr.error("Não há Valores de Fábrica para a Suspensão", "Cadastre os valores de fábrica através do menu")
+				this.clearTable()
+			}
 	
 	}
 	
 	setRPNAndKmFreio(){
 	
-			//if(this.linha.totalKmFreiosFabrica && this.linha.totalRPNFreiosFabrica){
+			if(this.linha.totalKmFreiosFabrica && this.linha.totalRPNFreiosFabrica){
 				this.isEnablingTable = true
 				this.type1 = "Pontos de parada"
 				this.type2 = "Semáforos"
@@ -134,19 +167,20 @@ export class RPNCalculatorComponent implements OnInit {
 				((this.ocorRow1F * this.seveRow1F * this.deteRow1F) + 
 				(this.ocorRow2F * this.seveRow2F * this.deteRow2F) +
 				(this.ocorRow3F * this.seveRow3F * this.deteRow3F))
-				this.KmSuspensao = ((this.linha.totalKmFreiosFabrica * this.RPNTFreio)/this.linha.totalRPNFreiosFabrica)
-			//}else{
-			//	this._toastr.error("Não há Valores de Fábrica para os Freios", "Cadastre os valores de fábrica através do menu")
-			//	this.clearTable()
-			//}
+				this.KmSuspensao = ((1 * this.RPNTFreio)/1)
+			}else{
+				this._toastr.error("Não há Valores de Fábrica para os Freios", "Cadastre os valores de fábrica através do menu")
+				this.clearTable()
+			}
 		
 	}
 
 	setRPNAndKmEmbreagem(){
 	
 
+		
 			console.log("entrou na embreagem")
-			//if(this.linha.totalKmEmbreagemFabrica && this.linha.totalRPNEmbreagemFabrica ){
+			if(this.linha.totalKmEmbreagemFabrica && this.linha.totalRPNEmbreagemFabrica ){
 				this.isEnablingTable = true
 				this.type1 = "Pontos de Parada"
 				this.type2 = "Semáforos"
@@ -155,11 +189,11 @@ export class RPNCalculatorComponent implements OnInit {
 				((this.ocorRow1E * this.seveRow1E * this.deteRow1E) + 
 				(this.ocorRow2E * this.seveRow2E * this.deteRow2E) +
 				(this.ocorRow3E * this.seveRow3E * this.deteRow3E))
-				this.KmEmbreagem = ((this.linha.totalKmEmbreagemFabrica * this.RPNTEmgreagem)/this.linha.totalRPNEmbreagemFabrica)
-			//}else{
-			//	this._toastr.error("Não há valores de Fábrica para a Embreagem", "Cadastre os valores de fábrica através do menu")
-            //    this.clearTable()
-			//}
+				this.KmEmbreagem = ((1 * this.RPNTEmgreagem)/1)
+			}else{
+				this._toastr.error("Não há valores de Fábrica para a Embreagem", "Cadastre os valores de fábrica através do menu")
+               this.clearTable()
+			}
 		
 	}
 
@@ -208,6 +242,7 @@ export class RPNCalculatorComponent implements OnInit {
 
 	salvarAnalise() {
 	
+		console.log(this.linha)
 		this._linhaService.update(this.linha).subscribe(
 		  result => {
 			this._toastr.success("Valores Calculados para essa linha salvos com sucesso!", "Novos valores salvos na base de dados")
