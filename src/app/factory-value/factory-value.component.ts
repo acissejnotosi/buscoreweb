@@ -11,8 +11,8 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 })
 export class FactoryValueComponent implements OnInit {
 
-  linha: ILinha[]
-
+  linhas: ILinha[]
+  linha: ILinha
   linhaSelecionada: number
 
   suspensaoBuraco: number = 0
@@ -33,6 +33,7 @@ export class FactoryValueComponent implements OnInit {
   isSubmitting: boolean = false
 
   linhaFabricaForm = new FormGroup({
+    linhaId: new FormControl(''),
     suspensaoBuraco: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     suspensaoRedutor: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
     suspensaoCarga: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
@@ -55,11 +56,45 @@ export class FactoryValueComponent implements OnInit {
     this._linhaService.getLinhas().subscribe(
       result => {
         this.linha = result
+        this.setForm()
       },
       error => {
         this._toastrService.error(error.error, "Erro ao carregar as linhas")
       }
     )
+  }
+
+  setForm(){
+    this.linhaForm.patchValue({
+      linhaId: this.linha.linhaId,
+      suspensaoBuraco: this.linha.suspensaoBuraco,
+      suspensaoRedutor: this.linha.suspensaoRedutor,
+      suspensaoCarga: this.linha.suspensaoCarga,
+      suspensaoKm: this.linha.suspensaoKm,
+      embreagemParada: this.linha.embreagemParada,
+      embreagemSemaforo: this.linha.embreagemSemaforo,
+      embreagemRedutor: this.linha.embreagemRedutor,
+      embreagemKm: this.linha.embreagemKm,
+      freiosParada: this.linha.freiosParada,
+      freiosSemaforo: this.linha.freiosSemaforo,
+      freiosRedutor: this.linha.freiosRedutor,
+      freiosKm: this.linha.freiosKm
+    });
+
+    this.suspensaoBuraco = this.linha.suspensaoBuraco
+    this.suspensaoRedutor = this.linha.suspensaoRedutor
+    this.suspensaoCarga = this.linha.suspensaoCarga
+    this.suspensaokm = this.linha.suspensaokm
+    this.embreagemParada = this.linha.embreagemParada
+    this.embreagemSemaforo = this.linha.embreagemSemaforo
+    this.embreagemRedutor = this.linha.this.embreagemRedutor
+    this.embreagemKm = this.linha.embreagemKm
+    this.freiosParada = this.linha.freiosParada
+    this.freiosSemaforo = this.linha.freiosSemaforo
+    this.freiosKm = this.linha.freiosKm
+
+    this.linhaFabricaForm.markAsUntouched()
+    this.linhaFabricaForm.markAsPristine()
   }
 
   onSubmit(){
