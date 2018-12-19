@@ -8,6 +8,15 @@ export interface ILinha {
 	totalKmFreiosFabrica: number;
 	totalKmEmbreagemFabrica: number;
 	totalKmSuspensaoFabrica: number;
+	rpnSuspensaoBuracoFabrica: number;
+	rpnSuspensaoRedutorFabrica: number;
+	rpnSuspensaoCargaFabrica: number;
+	rpnEmbreagemParadaFabrica: number;
+	rpnEmbreagemSemaforoFabrica: number;
+	rpnEmbreagemRedutorFabrica: number;
+	rpnFreioParadaFabrica: number;
+	rpnFreioSemaforoFabrica: number;
+	rpnFreioRedutorFabrica: number;
 	tipoOnibusId: number;
 	tipoOnibusNome: string;
 	pesoOnibus: number;
