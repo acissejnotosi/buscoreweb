@@ -15,60 +15,84 @@ export class FactoryValueComponent implements OnInit {
   linha: ILinha
   linhaSelecionada: number
 
-  suspensaoBuraco: number = 0
-  suspensaoRedutor: number = 0
-  suspensaoCarga: number = 0
-  suspensaoKm: number = 0
+  suspensaoBuracoCalc: number = 0
+  suspensaoRedutorCalc: number = 0
+  suspensaoCargaCalc: number = 0
+  suspensaoKmCalc: number = 0
 
-  embreagemParada: number = 0
-  embreagemSemaforo: number = 0
-  embreagemRedutor: number = 0
-  embreagemKm: number =0
+  embreagemParadaCalc: number = 0
+  embreagemSemaforoCalc: number = 0
+  embreagemRedutorCalc: number = 0
+  embreagemKmCalc: number = 0
 
-  freiosParada: number = 0
-  freiosSemaforo: number = 0
-  freiosRedutor: number = 0
-  freiosKm: number = 0
+  freiosParadaCalc: number = 0
+  freiosSemaforoCalc: number = 0
+  freiosRedutorCalc: number = 0
+  freiosKmCalc: number = 0
 
   isSubmitting: boolean = false
 
   linhaFabricaForm = new FormGroup({
     linhaId: new FormControl(''),
-    suspensaoBuraco: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    suspensaoRedutor: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    suspensaoCarga: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    suspensaoKm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+    suspensaoBuraco: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    suspensaoRedutor: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    suspensaoCarga: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    suspensaoKm: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
     totalRPNFreiosFabrica: new FormControl(null),
-    embreagemParada: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    embreagemSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    embreagemRedutor: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    embreagemKm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+    embreagemParada: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    embreagemSemaforo: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    embreagemRedutor: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    embreagemKm: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
     totalRPNEmbreagemFabrica: new FormControl(null),
-    freiosParada: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    freiosSemaforo: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    freiosRedutor: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
-    freiosKm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99999)]),
+    freiosParada: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    freiosSemaforo: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    freiosRedutor: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
+    freiosKm: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(99999)]),
     totalRPNSuspensaoFabrica: new FormControl(null)
-	})
+  })
 
   constructor(
     private _linhaService: LinhaService,
     private _toastrService: ToastrService) { }
 
-
-   ngOnInit() {
+  ngOnInit() {
     this._linhaService.getLinhas().subscribe(
       result => {
         this.linhas = result
+        console.log(result)
         this.setForm()
       },
       error => {
         this._toastrService.error(error.error, "Erro ao carregar as linhas")
       }
     )
-  } 
+  }
 
-  setForm(){
+  updateCalculation() {
+    this.suspensaoBuracoCalc = this.linhaFabricaForm.get('suspensaoBuraco').value
+    this.suspensaoRedutorCalc = this.linhaFabricaForm.get('suspensaoRedutor').value
+    this.suspensaoCargaCalc = this.linhaFabricaForm.get('suspensaoCarga').value
+    this.suspensaoKmCalc = this.linhaFabricaForm.get('suspensaoKm').value
+
+    this.embreagemParadaCalc = this.linhaFabricaForm.get('embreagemParada').value
+    this.embreagemSemaforoCalc = this.linhaFabricaForm.get('embreagemSemaforo').value
+    this.embreagemRedutorCalc = this.linhaFabricaForm.get('embreagemRedutor').value
+    this.embreagemKmCalc = this.linhaFabricaForm.get('embreagemKm').value
+
+    this.freiosParadaCalc = this.linhaFabricaForm.get('freiosParada').value
+    this.freiosSemaforoCalc = this.linhaFabricaForm.get('freiosSemaforo').value
+    this.freiosRedutorCalc = this.linhaFabricaForm.get('freiosRedutor').value
+    this.freiosKmCalc = this.linhaFabricaForm.get('freiosKm').value
+  }
+
+  setLinha(){
+    const linhaFiltro = this.linhas.filter(x => x.linhaId == this.linhaFabricaForm.get('linhaId').value)
+    if(!linhaFiltro || linhaFiltro.length == 0) return
+    this.linha = linhaFiltro[0]
+    this.setForm()
+  }
+
+  setForm() {
     this.linhaFabricaForm.patchValue({
       linhaId: this.linha.linhaId,
       suspensaoBuraco: this.linha.rpnSuspensaoBuracoFabrica,
@@ -85,38 +109,25 @@ export class FactoryValueComponent implements OnInit {
       freiosKm: this.linha.totalKmFreiosFabrica
     });
 
-    this.suspensaoBuraco = this.linha.rpnSuspensaoBuracoFabrica
-    this.suspensaoRedutor = this.linha.rpnSuspensaoRedutorFabrica
-    this.suspensaoCarga = this.linha.rpnSuspensaoCargaFabrica
-    this.suspensaoKm = this.linha.totalKmSuspensaoFabrica
-    this.embreagemParada = this.linha.rpnEmbreagemParadaFabrica
-    this.embreagemSemaforo = this.linha.rpnEmbreagemSemaforoFabrica
-    this.embreagemRedutor = this.linha.rpnEmbreagemRedutorFabrica
-    this.embreagemKm = this.linha.totalKmEmbreagemFabrica
-    this.freiosParada = this.linha.rpnFreioParadaFabrica
-    this.freiosSemaforo = this.linha.rpnFreioSemaforoFabrica
-    this.freiosRedutor = this.linha.rpnFreioRedutorFabrica
-    this.freiosKm = this.linha.totalKmFreiosFabrica
-
     this.linhaFabricaForm.markAsUntouched()
     this.linhaFabricaForm.markAsPristine()
   }
- 
-  onSubmit(){
+
+  onSubmit() {
     console.log(this.linhaFabricaForm)
 
-		this.isSubmitting = true
-		this._linhaService.saveLinha(this.linhaFabricaForm.value).subscribe(
-			result => {
-				this._toastrService.success("Valores atualizados com sucesso!", "Sucesso")
-				this.linhaFabricaForm.reset()
-				this.isSubmitting = false
-			},
-			error => {
-				console.log(error)
-				this._toastrService.error(error.error, "Houve um erro ao atualizar os valores de fabrica.")
-				this.isSubmitting = false
-			}
-		)
+    this.isSubmitting = true
+    this._linhaService.saveLinha(this.linhaFabricaForm.value).subscribe(
+      result => {
+        this._toastrService.success("Valores atualizados com sucesso!", "Sucesso")
+        this.linhaFabricaForm.reset()
+        this.isSubmitting = false
+      },
+      error => {
+        console.log(error)
+        this._toastrService.error(error.error, "Houve um erro ao atualizar os valores de fabrica.")
+        this.isSubmitting = false
+      }
+    )
   }
 }

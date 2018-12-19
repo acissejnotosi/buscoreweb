@@ -5,7 +5,7 @@
 
       <div style="display: inline-block; width: 40%; margin-bottom: 20px">
         Selecionar Linha:
-        <select name="busline" [(ngModel)]="linhaSelecionada" class="form-control">
+        <select formControlName="linhaId" class="form-control" (change)="setLinha()">
           <option value="{{linha.linhaId}}" *ngFor="let linha of linhas">{{linha.nomeLinha}}</option>
         </select>
       </div>
@@ -25,19 +25,39 @@
           <tr>
             <td>Suspensão</td>
             <td>
-              <input type="text" [(ngModel)]="suspensaoBuraco" formControlName="suspensaoBuraco" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoBuraco"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoBuraco?.errors.required || suspensaoBuraco?.errors.min || suspensaoBuraco?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="suspensaoRedutor" formControlName="suspensaoRedutor" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoRedutor"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoRedutor?.errors.required || suspensaoRedutor?.errors.min || suspensaoRedutor?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="suspensaoCarga" formControlName="suspensaoCarga" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoCarga"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoCarga?.errors.required || suspensaoCarga?.errors.min || suspensaoCarga?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="suspensaoKm" formControlName="suspensaoKm" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoKm"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              {{+suspensaoBuraco + +suspensaoRedutor + +suspensaoCarga}}
+              {{+suspensaoBuracoCalc + +suspensaoRedutorCalc + +suspensaoCargaCalc}}
             </td>
           </tr>
         </tbody>
@@ -58,19 +78,39 @@
           <tr>
             <td>Embreagem</td>
             <td>
-              <input type="text" [(ngModel)]="embreagemParada" formControlName="embreagemParada" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemParada"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="embreagemParada?.errors.required || embreagemParada?.errors.min || embreagemParada?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="embreagemSemaforo" formControlName="embreagemSemaforo" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemSemaforo"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="embreagemSemaforo?.errors.required || embreagemSemaforo?.errors.min || embreagemSemaforo?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="embreagemRedutor" formControlName="embreagemRedutor" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemRedutor"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="embreagemRedutor?.errors.required || embreagemRedutor?.errors.min || embreagemRedutor?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="embreagemKm" formControlName="embreagemKm" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemKm"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="embreagemKm?.errors.required || embreagemKm?.errors.min || embreagemKm?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              {{+embreagemParada + +embreagemSemaforo + +embreagemRedutor}}
+              {{+embreagemParadaCalc + +embreagemSemaforoCalc + +embreagemRedutorCalc}}
             </td>
           </tr>
         </tbody>
@@ -91,19 +131,39 @@
           <tr>
             <td>Freios</td>
             <td>
-              <input type="text" [(ngModel)]="freiosParada" formControlName="freiosParada" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosParada"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="freiosSemaforo" formControlName="freiosSemaforo" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosSemaforo"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="freiosRedutor" formControlName="freiosRedutor" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosRedutor"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              <input type="text" [(ngModel)]="freiosKm" formControlName="freiosKm" class="form-control" autocomplete="off" />
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosKm"
+                class="form-control" autocomplete="off" />
+              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+                class="error-validation">
+                Este campo precisa ser um valor entre 1 e 99999.
+              </div>
             </td>
             <td>
-              {{+freiosParada + +freiosSemaforo + +freiosRedutor}}
+              {{+freiosParadaCalc + +freiosSemaforoCalc + +freiosRedutorCalc}}
             </td>
           </tr>
         </tbody>
