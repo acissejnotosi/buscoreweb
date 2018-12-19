@@ -1,6 +1,6 @@
 export interface ISuspensao {
     suspensaoID : number
-    rpnEmbreagemCalculado : number
+    rpnSuspensaoCalculado : number
     rpnBuracoCalculado : number
     rpnRedutorCalculado : number
     rpnCargaCalculado : number

@@ -109,7 +109,7 @@
           <tr>
             <td>Buracos</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow1S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow1SBuraco" (change)="setRPNAndKmSuspensao()"
               />
 
               <div *ngIf="ocorSuspensao <1 || ocorSuspensao > 10" class="error-validation">
@@ -118,71 +118,71 @@
 
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow1S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow1SBuraco" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="seveSuspensao <1 || seveSuspensao > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow1S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow1SBuraco" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="deteSuspensao <1 || deteSuspensao > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
-            <td>{{ocorRow1S * seveRow1S * deteRow1S}}</td>
+            <td>{{ocorRow1SBuraco * seveRow1SBuraco * deteRow1SBuraco}}</td>
           </tr>
           <tr>
             <td>Redutores</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow2S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow2SRedutor" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="ocorFreio <1 || ocorFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow2S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow2SRedutor" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="seveFreio <1 || seveFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow2S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow2SRedutor" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="deteFreio <1 || deteFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
-            <td>{{ocorRow2S * seveRow2S * deteRow2S}}</td>
+            <td>{{ocorRow2SRedutor * seveRow2SRedutor * deteRow2SRedutor}}</td>
           </tr>
           <tr>
             <td>Carga</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow3S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow3SCarga" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="ocorEmbreagem <1 || ocorEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow3S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow3SCarga" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="seveEmbreagem <1 || seveEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow3S" (change)="setRPNAndKmSuspensao()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow3SCarga" (change)="setRPNAndKmSuspensao()"
               />
               <div *ngIf="deteEmbreagem <1 || deteEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
 
             </td>
-            <td>{{ocorRow3S * seveRow3S * deteRow3S}}</td>
+            <td>{{ocorRow3SCarga * seveRow3SCarga * deteRow3SCarga}}</td>
           </tr>
         </tbody>
         <tbody >
@@ -192,7 +192,7 @@
           <tr>
             <td>Parada</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow1F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow1FParada" (change)="setRPNAndKmFreio()"
               />
 
               <div *ngIf="ocorSuspensao <1 || ocorSuspensao > 10" class="error-validation">
@@ -201,71 +201,71 @@
 
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow1F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow1FParada" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="seveSuspensao <1 || seveSuspensao > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow1F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow1FParada" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="deteSuspensao <1 || deteSuspensao > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
-            <td>{{ocorRow1F * seveRow1F * deteRow1F}}</td>
+            <td>{{ocorRow1FParada * seveRow1FParada * deteRow1FParada}}</td>
           </tr>
           <tr>
             <td>Semáforo</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow2F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow2FSemaforo" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="ocorFreio <1 || ocorFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow2F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow2FSemaforo" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="seveFreio <1 || seveFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow2F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow2FSemaforo" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="deteFreio <1 || deteFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
-            <td>{{ocorRow2F * seveRow2F * deteRow2F}}</td>
+            <td>{{ocorRow2FSemaforo * seveRow2FSemaforo * deteRow2FSemaforo}}</td>
           </tr>
           <tr>
             <td>Redutor</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow3F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow3FRedutor" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="ocorEmbreagem <1 || ocorEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow3F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow3FRedutor" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="seveEmbreagem <1 || seveEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow3F" (change)="setRPNAndKmFreio()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow3FRedutor" (change)="setRPNAndKmFreio()"
               />
               <div *ngIf="deteEmbreagem <1 || deteEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
 
             </td>
-            <td>{{ocorRow3F * seveRow3F * deteRow3F}}</td>
+            <td>{{ocorRow3FRedutor * seveRow3FRedutor * deteRow3FRedutor}}</td>
           </tr>
         </tbody>
 
@@ -276,7 +276,7 @@
           <tr>
             <td>Parada</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow1E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow1EParada" (change)="setRPNAndKmEmbreagem()"
               />
 
               <div *ngIf="ocorSuspensao <1 || ocorSuspensao > 10" class="error-validation">
@@ -285,71 +285,71 @@
 
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow1E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow1EParada" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="seveSuspensao <1 || seveSuspensao > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow1E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow1EParada" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="deteSuspensao <1 || deteSuspensao > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
-            <td>{{ocorRow1E * seveRow1E * deteRow1E}}</td>
+            <td>{{ocorRow1EParada * seveRow1EParada * deteRow1EParada}}</td>
           </tr>
           <tr>
             <td>Semáforo</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow2E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow2ESemaforo" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="ocorFreio <1 || ocorFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow2E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow2ESemaforo" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="seveFreio <1 || seveFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow2E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow2ESemaforo" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="deteFreio <1 || deteFreio > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
-            <td>{{ocorRow2E* seveRow2E * deteRow2E}}</td>
+            <td>{{ocorRow2ESemaforo * seveRow2ESemaforo * deteRow2ESemaforo}}</td>
           </tr>
           <tr>
             <td>Redutor</td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow3E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow3ERedutor" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="ocorEmbreagem <1 || ocorEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow3E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="seveRow3ERedutor" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="seveEmbreagem <1 || seveEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
             </td>
             <td>
-              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow3E" (change)="setRPNAndKmEmbreagem()"
+              <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="deteRow3ERedutor" (change)="setRPNAndKmEmbreagem()"
               />
               <div *ngIf="deteEmbreagem <1 || deteEmbreagem > 10" class="error-validation">
                 O valor deve ser entre 1-10.
               </div>
 
             </td>
-            <td>{{ocorRow3E * seveRow3E * deteRow3E}}</td>
+            <td>{{ocorRow3ERedutor * seveRow3ERedutor * deteRow3ERedutor}}</td>
           </tr>
         </tbody>
       </table>

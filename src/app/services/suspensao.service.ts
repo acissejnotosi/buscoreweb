@@ -20,18 +20,22 @@ export class SuspensaoService {
 
 	constructor(private _http: HttpClient) { }
 
-	getEmbreagemById(id: number): Observable<ISuspensao> {
+	getSuspensaoById(id: number): Observable<ISuspensao> {
 		const url = this.final_url.concat(`/GetById?id=${id}`)
 		return this._http.get<ISuspensao>(url)
 	}
 
-	getEmbreagem(): Observable<ISuspensao[]> {
+	getSuspensao(): Observable<ISuspensao[]> {
 		return this._http.get<ISuspensao[]>(this.final_url)
 	}
 
-	saveEmbreagem(formValues: any) {
+	saveSuspensao(formValues: any) {
+
 		const body = JSON.stringify(formValues)
+		console.log("Foi")
 		return this._http.post(this.final_url, body, this.httpOptions)
+
+		console.log("Foi")
 	}
 
 	delete(id: number) {

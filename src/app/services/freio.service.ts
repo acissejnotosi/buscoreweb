@@ -21,16 +21,17 @@ export class FreioService {
 
 	constructor(private _http: HttpClient) { }
 
-	getEmbreagemById(id: number): Observable<IFreio> {
+	getFreioById(id: number): Observable<IFreio> {
 		const url = this.final_url.concat(`/GetById?id=${id}`)
 		return this._http.get<IFreio>(url)
 	}
 
-	getEmbreagem(): Observable<IFreio[]> {
+	getFreio(): Observable<IFreio[]> {
 		return this._http.get<IFreio[]>(this.final_url)
 	}
 
-	saveEmbreagem(formValues: any) {
+	saveFreio(formValues: any) {
+		console.log("freio form:"+formValues)
 		const body = JSON.stringify(formValues)
 		return this._http.post(this.final_url, body, this.httpOptions)
 	}
