@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { IEmbreagem } from '../models/embreagem.model';
+import { IEmbreagemReport } from '../models/embreagemReportView.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,12 @@ export class EmbreagemService {
 		const url = this.final_url.concat(`/GetById?id=${id}`)
 		return this._http.get<IEmbreagem>(url)
 	}
+
+	getEmbreagemByLinhaId(id: number): Observable<IEmbreagemReport> {
+		const url = this.final_url.concat(`/GetByLinhaId?id=${id}`)
+		return this._http.get<IEmbreagemReport>(url)
+	}
+
 
 	getEmbreagem(): Observable<IEmbreagem[]> {
 		return this._http.get<IEmbreagem[]>(this.final_url)

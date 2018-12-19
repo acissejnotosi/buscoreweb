@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { IFreio } from '../models/freio.model';
+import { IfreioReport } from '../models/freioReportView.model';
 
 
 @Injectable({
@@ -24,6 +25,10 @@ export class FreioService {
 	getFreioById(id: number): Observable<IFreio> {
 		const url = this.final_url.concat(`/GetById?id=${id}`)
 		return this._http.get<IFreio>(url)
+	}
+	getFreioByLinhaId(id: number): Observable<IfreioReport> {
+		const url = this.final_url.concat(`/GetByLinhaId?id=${id}`)
+		return this._http.get<IfreioReport>(url)
 	}
 
 	getFreio(): Observable<IFreio[]> {

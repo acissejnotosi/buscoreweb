@@ -5,17 +5,18 @@
       <div style="float: left; margin-top: -100px;">
         <a href="report.html"><button style="margin-top: 20px;" id="appearance-button">Retornar</button></a>
       </div>
-      <h3>Dados da Linha:</h3>
+      <h3>Dados da Linha:</h3 >
       <div>
-        <div class="content-left">
-          <span>Nome da Linha: </span><span>?</span><br />
-          <span>Número da Linha: </span><span>?</span><br />
-          <span>Tipo do Onibus: </span><span>?</span><br />
-          <span>Peso do Ônibus: </span><span>?</span>
+        <div class="content-left" *ngIf="linha">
+          <span>Nome da Linha: </span><span >{{linha.nomeLinha}}</span><br />
+          <span>Número da Linha: </span><span>{{linha.numeroLinha}}</span><br />
+          <span>Tipo do Onibus: </span><span>{{linha.tipoOnibusNome}}</span><br />
+          <span>Peso do Ônibus: </span><span>{{linha.pesoOnibus}}</span>
 
         </div>
         <div class="content-right">
-          <span>Número de Paradas: </span><span>?</span><br />
+          <span>Os números abaixo são dados rescolhidos da última coleta</span><br />
+          <span>Número de Paradas: </span><span>puxar da Tabela</span><br />
           <span>Número de Buracos: </span><span>?</span><br />
           <span>Número de Semáforos: </span><span>?</span><br />
           <span>Número de Lombadas: </span><span>?</span>
@@ -24,7 +25,7 @@
       <div style="margin-top: 140px;">
 
         <h3>Suspensão</h3>
-        <table class="table table-striped">
+        <table class="table table-striped" *ngIf="suspensao">
           <thead class="thead-dark">
             <tr>
               <th>Descrição</th>
@@ -37,29 +38,29 @@
           <tbody>
             <tr>
               <td>Buracos</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "ocorRow1SBuraco" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "seveRow1SBuraco" /></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "deteRow1SBuraco" /></td>
+              <td>{{suspensao?.rpnBuraco}}</td>
             </tr>
             <tr>
               <td>Redutores</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off"  [(ngModel)] = "ocorRow2SRedutor" /></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "seveRow2SRedutor" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "deteRow2SRedutor" /></td>
+              <td>{{suspensao?.rpnRedutor}}</td>
             </tr>
             <tr>
               <td>Carga (kg)</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "ocorRow3SCarga"/></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "seveRow3SCarga"/></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "deteRow3SCarga"/></td>
+              <td>{{suspensao?.rpnCarga}}</td>
             </tr>
           </tbody>
         </table>
         <h3>Freios</h3>
-        <table class="table table-striped">
+        <table class="table table-striped" *ngIf="freio">
           <thead class="thead-dark">
             <tr>
               <th>Descrição</th>
@@ -72,29 +73,29 @@
           <tbody>
             <tr>
               <td>Pontos de Parada</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "ocorRow1FParada" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "seveRow1FParada" /></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "deteRow1FParada"/></td>
+              <td>{{freio.rpnPontosParada}}</td>
             </tr>
             <tr>
               <td>Semáforos</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "ocorRow2FSemaforo"/></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "seveRow2FSemaforo" /></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "deteRow2FSemaforo"/></td>
+              <td>{{freio.rpnSemaforo}}</td>
             </tr>
             <tr>
               <td>Redutores</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "ocorRow3FRedutor"/></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "seveRow3FRedutor" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "deteRow3FRedutor" /></td>
+              <td>{{freio.rpnRedutores}}</td>
             </tr>
           </tbody>
         </table>
         <h3>Embreagem</h3>
-        <table class="table table-striped">
+        <table class="table table-striped" *ngIf="embreagem">
           <thead class="thead-dark">
             <tr>
               <th>Descrição</th>
@@ -107,24 +108,24 @@
           <tbody>
             <tr>
               <td>Pontos de Parada</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "ocorRow1EParada"/></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "seveRow1EParada"/></td>
+              <td><input type="text" autocomplete="off" [(ngModel)] = "deteRow1EParada"/></td>
+              <td>{{embreagem.rpnParada}}</td>
             </tr>
             <tr>
               <td>Semáforos</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "ocorRow2ESemaforo" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "seveRow2ESemaforo" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "deteRow2ESemaforo" /></td>
+              <td>{{embreagem.rpnSemaforo}}</td>
             </tr>
             <tr>
               <td>Redutores</td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td><input type="text" autocomplete="off" /></td>
-              <td>?????</td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "ocorRow3ERedutor" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "seveRow3ERedutor" /></td>
+              <td><input type="text" autocomplete="off"[(ngModel)] = "deteRow3ERedutor" /></td>
+              <td>{{embreagem.rpnRedutor}}</td>
             </tr>
           </tbody>
         </table>
@@ -147,36 +148,36 @@
             <th>Fábrica</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="suspensao">
           <tr>
             <td>Buraco</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{suspensao?.rpnBuraco}}</td>
+            <td>{{linha?.rpnSuspensaoBuracoFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>Redutores</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{suspensao?.rpnRedutor}}</td>
+            <td>{{linha?.rpnSuspensaoRedutorFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>Carga</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{suspensao?.rpnCarga}}</td>
+            <td>{{linha?.rpnSuspensaoCargaFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>KM</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{suspensao?.rpnKmFabrica}}</td>
+            <td>{{linha?.totalKmSuspensaoFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
         </tbody>
         <thead class="thead-dark">
           <tr>
             <th rowspan="2" style="width: 20%">Componente</th>
-            <th colspan="2">Suspensão</th>
+            <th colspan="2">Freios</th>
             <th rowspan="2" style="width: 10%; text-align:center">✔</th>
           </tr>
           <tr>
@@ -184,36 +185,36 @@
             <th>Fábrica</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="freio">
           <tr>
             <td>Pontos de Parada</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{freio?.rpnPontosParada}}</td>
+            <td>{{linha?.rpnFreioParadaFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>Semáforos</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{freio?.rpnSemaforo}}</td>
+            <td>{{linha?.rpnFreioSemaforoFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>Redutores</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{freio?.rpnRedutores}}</td>
+            <td>{{linha?.rpnFreioRedutorFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>KM</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{freio?.kmFreioCalculado}}</td>
+            <td>{{linha?.totalKmFreiosFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
         </tbody>
         <thead class="thead-dark">
           <tr>
             <th rowspan="2" style="width: 20%">Componente</th>
-            <th colspan="2">Suspensão</th>
+            <th colspan="2">Embreagem</th>
             <th rowspan="2" style="width: 10%; text-align:center">✔</th>
           </tr>
           <tr>
@@ -221,29 +222,29 @@
             <th>Fábrica</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="embreagem">
           <tr>
             <td>Pontos de Parada</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{embreagem?.rpnParada}}</td>
+            <td>{{linha?.rpnEmbreagemParadaFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>Semáforos</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{embreagem?.rpnSemaforo}}</td>
+            <td>{{linha?.rpnEmbreagemSemaforoFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>Redutores</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{embreagem?.rpnRedutor}}</td>
+            <td>{{linha?.rpnEmbreagemRedutorFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>KM</td>
-            <td>?</td>
-            <td>?</td>
+            <td>{{embreagem?.kmEmbreagemCalculado}}</td>
+            <td>{{linha?.totalKmEmbreagemFabrica}}</td>
             <td>&nbsp;</td>
           </tr>
         </tbody>

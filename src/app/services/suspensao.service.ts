@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { ISuspensao } from '../models/suspensao.model';
+import { ISuspensaoReport } from '../models/suspensaoReportView.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,12 @@ export class SuspensaoService {
 		const url = this.final_url.concat(`/GetById?id=${id}`)
 		return this._http.get<ISuspensao>(url)
 	}
+
+	getSuspensaoByLinhaId(id: number): Observable<ISuspensaoReport> {
+		const url = this.final_url.concat(`/GetByLinhaId?id=${id}`)
+		return this._http.get<ISuspensaoReport>(url)
+	}
+
 
 	getSuspensao(): Observable<ISuspensao[]> {
 		return this._http.get<ISuspensao[]>(this.final_url)
