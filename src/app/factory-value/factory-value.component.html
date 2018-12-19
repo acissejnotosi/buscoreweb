@@ -18,40 +18,42 @@
             <th scope="col">RPN Redutor</th>
             <th scope="col">RPN Carga</th>
             <th scope="col">KM Fabrica</th>
-            <th scope="col"><b>RPN Total Fábrica</b></th>
+            <th scope="col">
+              <b>RPN Total Fábrica</b>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Suspensão</td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoBuraco"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNSuspensaoBuracoFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoBuraco?.errors.required || suspensaoBuraco?.errors.min || suspensaoBuraco?.errors.max"
+              <div *ngIf="RPNSuspensaoBuracoFabrica?.errors.required || RPNSuspensaoBuracoFabrica?.errors.min || RPNSuspensaoBuracoFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoRedutor"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNSuspensaoRedutorFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoRedutor?.errors.required || suspensaoRedutor?.errors.min || suspensaoRedutor?.errors.max"
+              <div *ngIf="RPNSuspensaoRedutorFabrica?.errors.required || RPNSuspensaoRedutorFabrica?.errors.min || RPNSuspensaoRedutorFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoCarga"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNSuspensaoCargaFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoCarga?.errors.required || suspensaoCarga?.errors.min || suspensaoCarga?.errors.max"
+              <div *ngIf="RPNSuspensaoCargaFabrica?.errors.required || RPNSuspensaoCargaFabrica?.errors.min || RPNSuspensaoCargaFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="suspensaoKm"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="totalKmSuspensaoFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+              <div *ngIf="totalKmSuspensaoFabrica?.errors.required || totalKmSuspensaoFabrica?.errors.min || totalKmSuspensaoFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
@@ -71,40 +73,42 @@
             <th scope="col">RPN Semaforo</th>
             <th scope="col">RPN Redutor</th>
             <th scope="col">KM Fabrica</th>
-            <th scope="col"><b>RPN Total Fábrica</b></th>
+            <th scope="col">
+              <b>RPN Total Fábrica</b>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Embreagem</td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemParada"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNEmbreagemParadaFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="embreagemParada?.errors.required || embreagemParada?.errors.min || embreagemParada?.errors.max"
+              <div *ngIf="RPNEmbreagemParadaFabrica?.errors.required || RPNEmbreagemParadaFabrica?.errors.min || RPNEmbreagemParadaFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemSemaforo"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNEmbreagemSemaforoFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="embreagemSemaforo?.errors.required || embreagemSemaforo?.errors.min || embreagemSemaforo?.errors.max"
+              <div *ngIf="RPNEmbreagemSemaforoFabrica?.errors.required || RPNEmbreagemSemaforoFabrica?.errors.min || RPNEmbreagemSemaforoFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemRedutor"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNEmbreagemRedutorFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="embreagemRedutor?.errors.required || embreagemRedutor?.errors.min || embreagemRedutor?.errors.max"
+              <div *ngIf="RPNEmbreagemRedutorFabrica?.errors.required || RPNEmbreagemRedutorFabrica?.errors.min || RPNEmbreagemRedutorFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="embreagemKm"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="totalKmEmbreagemFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="embreagemKm?.errors.required || embreagemKm?.errors.min || embreagemKm?.errors.max"
+              <div *ngIf="totalKmEmbreagemFabrica?.errors.required || totalKmEmbreagemFabrica?.errors.min || totalKmEmbreagemFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
@@ -124,40 +128,42 @@
             <th scope="col">RPN Semaforo</th>
             <th scope="col">RPN Redutor</th>
             <th scope="col">KM Fabrica</th>
-            <th scope="col"><b>RPN Total Fábrica</b></th>
+            <th scope="col">
+              <b>RPN Total Fábrica</b>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Freios</td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosParada"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNFreioParadaFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+              <div *ngIf="RPNFreioParadaFabrica?.errors.required || RPNFreioParadaFabrica?.errors.min || RPNFreioParadaFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosSemaforo"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNFreioSemaforoFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+              <div *ngIf="RPNFreioSemaforoFabrica?.errors.required || RPNFreioSemaforoFabrica?.errors.min || RPNFreioSemaforoFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosRedutor"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="RPNFreioRedutorFabrica"
                 class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+              <div *ngIf="RPNFreioRedutorFabrica?.errors.required || RPNFreioRedutorFabrica?.errors.min || RPNFreioRedutorFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
             </td>
             <td>
-              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="freiosKm"
-                class="form-control" autocomplete="off" />
-              <div *ngIf="suspensaoKm?.errors.required || suspensaoKm?.errors.min || suspensaoKm?.errors.max"
+              <input type="number" required min="0" max="99999" (change)="updateCalculation()" formControlName="totalKmFreiosFabrica" class="form-control"
+                autocomplete="off" />
+              <div *ngIf="totalKmFreiosFabrica?.errors.required || totalKmFreiosFabrica?.errors.min || totalKmFreiosFabrica?.errors.max"
                 class="error-validation">
                 Este campo precisa ser um valor entre 1 e 99999.
               </div>
@@ -170,7 +176,9 @@
       </table>
 
       <div style="margin-top: 20px;">
-        <p><b>Resultados</b></p>
+        <p>
+          <b>Resultados</b>
+        </p>
 
         <table class="table table-striped" style="font-size: 16px;">
           <thead class="thead-dark">
@@ -183,21 +191,30 @@
           <tbody>
             <tr>
               <td>
-                RPN: <strong>{{+suspensaoBuraco + +suspensaoRedutor + +suspensaoCarga}}</strong><br />
-                KM: <strong>{{suspensaoKm}}</strong><br />
+                RPN:
+                <strong>{{+suspensaoBuracoCalc + +suspensaoRedutorCalc + +suspensaoCargaCalc}}</strong>
+                <br /> KM:
+                <strong>{{suspensaoKmCalc}}</strong>
+                <br />
               </td>
               <td>
-                RPN: <strong>{{+embreagemParada + +embreagemSemaforo + +embreagemRedutor}}</strong><br />
-                KM: <strong>{{embreagemKm}}</strong><br />
+                RPN:
+                <strong>{{+embreagemParadaCalc + +embreagemSemaforoCalc + +embreagemRedutorCalc}}</strong>
+                <br /> KM:
+                <strong>{{embreagemKmCalc}}</strong>
+                <br />
               </td>
               <td>
-                RPN: <strong>{{+freiosParada + +freiosSemaforo + +freiosRedutor}}</strong><br />
-                KM: <strong>{{freiosKm}}</strong><br />
+                RPN:
+                <strong>{{+freiosParadaCalc + +freiosSemaforoCalc + +freiosRedutorCalc}}</strong>
+                <br /> KM:
+                <strong>{{freiosKmCalc}}</strong>
+                <br />
               </td>
             </tr>
           </tbody>
         </table>
-        <button type="submit" class="btn btn-primary float-right" [disabled]="!linhaFabricaForm.valid && isSubmitting">Salvar</button>
+        <button type="submit" class="btn btn-primary float-right" [disabled]="linhaFabricaForm.valid && isSubmitting">Salvar</button>
       </div>
     </form>
   </div>

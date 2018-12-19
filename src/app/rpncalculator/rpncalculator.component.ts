@@ -104,8 +104,8 @@ export class RPNCalculatorComponent implements OnInit {
 	}
 
 	setRPNAndKmSuspensao(){
-		this.getLinhaById(this.selectedLinha)		
-		if(this.selecao == "suspension"){
+	
+	
 		//if(this.linha.totalKmSuspensaoFabrica  && this.linha.totalRPNSuspensaoFabrica ){
 				this.isEnablingTable = true
 				this.type1 = "Buracos"
@@ -120,11 +120,11 @@ export class RPNCalculatorComponent implements OnInit {
 			//	this._toastr.error("Não há Valores de Fábrica para a Suspensão", "Cadastre os valores de fábrica através do menu")
 			//	this.clearTable()
 			//}
-		}
+	
 	}
 	
 	setRPNAndKmFreio(){
-		if(this.selecao == "brakes" ){
+	
 			//if(this.linha.totalKmFreiosFabrica && this.linha.totalRPNFreiosFabrica){
 				this.isEnablingTable = true
 				this.type1 = "Pontos de parada"
@@ -139,11 +139,11 @@ export class RPNCalculatorComponent implements OnInit {
 			//	this._toastr.error("Não há Valores de Fábrica para os Freios", "Cadastre os valores de fábrica através do menu")
 			//	this.clearTable()
 			//}
-		}
+		
 	}
 
 	setRPNAndKmEmbreagem(){
-		if(this.selecao == "clutch" ){
+	
 
 			console.log("entrou na embreagem")
 			//if(this.linha.totalKmEmbreagemFabrica && this.linha.totalRPNEmbreagemFabrica ){
@@ -160,7 +160,7 @@ export class RPNCalculatorComponent implements OnInit {
 			//	this._toastr.error("Não há valores de Fábrica para a Embreagem", "Cadastre os valores de fábrica através do menu")
             //    this.clearTable()
 			//}
-		}
+		
 	}
 
 	
@@ -207,7 +207,7 @@ export class RPNCalculatorComponent implements OnInit {
 	}
 
 	salvarAnalise() {
-		this.isSaving = true
+	
 		this._linhaService.update(this.linha).subscribe(
 		  result => {
 			this._toastr.success("Valores Calculados para essa linha salvos com sucesso!", "Novos valores salvos na base de dados")
@@ -229,15 +229,36 @@ export class RPNCalculatorComponent implements OnInit {
 			// Store
 			console.log("entrou")
 
-			localStorage.setItem("ocorSuspensao", JSON.stringify(this.ocorRow1S));
-			localStorage.setItem("seveSuspensao", JSON.stringify(this.seveRow1S));
-			localStorage.setItem("deteSuspensao", JSON.stringify(this.deteRow1S));
-			localStorage.setItem("ocorFreio",JSON.stringify(this.ocorRow2S));
-			localStorage.setItem("seveFreio", JSON.stringify(this.seveRow2S));
-			localStorage.setItem("deteFreio",JSON.stringify(this.deteRow2S));
-			localStorage.setItem("ocorEmbreagem", JSON.stringify(this.ocorRow3S));
-			localStorage.setItem("seveEmbreagem",JSON.stringify(this.seveRow3S));
-			localStorage.setItem("deteEmbreagem", JSON.stringify(this.deteRow3S));
+			//Suspensao
+			localStorage.setItem("ocorSuspensaor1", JSON.stringify(this.ocorRow1S));
+			localStorage.setItem("seveSuspensaor1", JSON.stringify(this.seveRow1S));
+			localStorage.setItem("deteSuspensaor1", JSON.stringify(this.deteRow1S));
+			localStorage.setItem("ocorSuspensaor2",JSON.stringify(this.ocorRow2S));
+			localStorage.setItem("seveSuspensaor2", JSON.stringify(this.seveRow2S));
+			localStorage.setItem("deteSuspensaor2",JSON.stringify(this.deteRow2S));
+			localStorage.setItem("ocorSuspensaor3", JSON.stringify(this.ocorRow3S));
+			localStorage.setItem("seveSuspensaor3",JSON.stringify(this.seveRow3S));
+			localStorage.setItem("deteSuspensaor3", JSON.stringify(this.deteRow3S));
+			//Freio
+			localStorage.setItem("ocorFreior1", JSON.stringify(this.ocorRow1F));
+			localStorage.setItem("seveFreior1", JSON.stringify(this.seveRow1F));
+			localStorage.setItem("deteFreior1", JSON.stringify(this.deteRow1F));
+			localStorage.setItem("ocorFreior2",JSON.stringify(this.ocorRow2F));
+			localStorage.setItem("seveFreior2", JSON.stringify(this.seveRow2F));
+			localStorage.setItem("deteFreior2",JSON.stringify(this.deteRow2F));
+			localStorage.setItem("ocorFreior3", JSON.stringify(this.ocorRow3F));
+			localStorage.setItem("seveFreior3",JSON.stringify(this.seveRow3F));
+			localStorage.setItem("deteFreior3", JSON.stringify(this.deteRow3F));
+			//Embreagem
+			localStorage.setItem("ocorEmbreagemr1", JSON.stringify(this.ocorRow1E));
+			localStorage.setItem("seveEmbreagemr1", JSON.stringify(this.seveRow1E));
+			localStorage.setItem("deteEmbreagemr1", JSON.stringify(this.deteRow1E));
+			localStorage.setItem("ocorEmbreagemr2",JSON.stringify(this.ocorRow2E));
+			localStorage.setItem("seveEmbreagemr2", JSON.stringify(this.seveRow2E));
+			localStorage.setItem("deteEmbreagemr2",JSON.stringify(this.deteRow2E));
+			localStorage.setItem("ocorEmbreagemr3", JSON.stringify(this.ocorRow3E));
+			localStorage.setItem("seveEmbreagemr3",JSON.stringify(this.seveRow3E));
+			localStorage.setItem("deteEmbreagemr3", JSON.stringify(this.deteRow3E));
 
 			// Retrieve
 		//	document.getElementById("result").innerHTML = localStorage.getItem("lastname");

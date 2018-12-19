@@ -104,10 +104,10 @@
           </tr>
         </thead>
         <tbody >
-          <thead class="thead-black"><tr><th>Suspensão</th></tr></thead>
+         <tr style="background-color: rgb(200, 200, 200)"><td>Suspensão</td><td></td><td></td><td></td><td></td></tr>
           
           <tr>
-            <td>{{type1}}</td>
+            <td>Buracos</td>
             <td>
               <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow1S" (change)="setRPNAndKmSuspensao()"
               />
@@ -134,7 +134,7 @@
             <td>{{ocorRow1S * seveRow1S * deteRow1S}}</td>
           </tr>
           <tr>
-            <td>{{type2}}</td>
+            <td>Redutores</td>
             <td>
               <input [disabled]="!isEnablingTable" class="form-control" type="text" autocomplete="off" [(ngModel)]="ocorRow2S" (change)="setRPNAndKmSuspensao()"
               />
@@ -186,8 +186,8 @@
           </tr>
         </tbody>
         <tbody >
-          <thead class="thead-black">  <tr>
-              <th>Freios</th></tr></thead>
+            <tr style="background-color: rgb(200, 200, 200)"><td>Freios</td><td></td><td></td><td></td><td></td></tr>
+       
       
           <tr>
             <td>{{type1}}</td>
@@ -270,7 +270,8 @@
         </tbody>
 
         <tbody >
-            <thead class="thead-black"><tr><th>Embreagem</th></tr></thead>
+            <tr style="background-color: rgb(200, 200, 200)"><td>Embreagem</td><td></td><td></td><td></td><td></td></tr>
+    
        
           <tr>
             <td>{{type1}}</td>
@@ -385,7 +386,7 @@
           </tbody>
         </table>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!isSaving" style='margin:10px'>Salvar Análise</button>
+      <button type="submit" class="btn btn-primary" (click)="salvarAnalise(linha)"  style='margin:10px'>Salvar Análise</button>
       <button class="btn btn-primary" (click)="redirecionarParaGerarRelatorio(linha)" [disabled]="!isRedirecting" role="button"
         style='margin:10px'>Gerar Relatório</button>
     </div>
